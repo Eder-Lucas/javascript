@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento de Dados</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: yellow;
+        }
+
+        p {
+            padding: 0px 20px 0px 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Olá, mundo!</h1>
+    <p>Já me livrei da maldição!</p>
+
+    <script>
+        // converte para número
+        var n1 = Number(window.prompt('Digite um número: ')) //string
+        var n2 = Number(window.prompt('Digite outro número: ')) // string
+        var s = n1 + n2
+        window.alert(`A soma entre ${n1} e ${n2} é igual a:  ${s}`)// template string
+        // (number + number) = adição
+        // (string + string) = concatenação
+        // Number.parseFloat(n) = números quebrados
+        // Number.parseInt(n) = números inteiros
+        // Number(n) = o javaScript entende se é inteiro ou quebrado
+        // String(n) = string para números
+        // n.toString() = string para números
+    </script>
+</body>
+</html>
