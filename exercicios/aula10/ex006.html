@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        div#area {
+            margin: auto;
+            margin-top: 20px;
+            font: bolder 16pt Arial;
+            background-color: yellow;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border: 2px solid yellow;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>coloque o mouse, clique e tire o mouse</h1>
+    <div id="area">
+        <p>Interaja...</p>
+    </div>
+
+    <script>
+        var area = window.document.getElementById('area')
+
+        // pode ir direto no html
+        area.addEventListener('click', clicar)        
+        area.addEventListener('mouseenter', entrar)
+        area.addEventListener('mouseout', sair)
+
+        function clicar() {// só executa quando clica
+            area.innerText = 'Clicou!'
+            area.style.background = 'black'
+            area.style.color = 'white'
+        }
+
+        function entrar() {// só executa quando o mouse entra na div
+            area.innerText = 'Entrou!'
+        }
+
+        function sair() {// só executa quando o mouse sai da div
+            area.innerText = 'Saiu!'
+            area.style.background = 'yellow'
+            area.style.color = 'black'
+        }
+    </script>
+</body>
+</html>
