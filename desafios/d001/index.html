@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROPORTO</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font: normal 16pt Arial;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            color: yellow;
+        }
+
+        select {
+            height: 30px;
+            outline: none;
+            font-weight: bold;
+        }
+
+        option {
+            font-weight:bold;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 15px 15px;
+            background-color: white;
+            font-weight: bolder;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        div > p#res {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sua nacionalidade, por favor</h1>
+        <div>
+            <label for="pais">De onde você veio?
+                <select name="pais" id="pais">
+                    <option value="México">México</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="Canadá">Canadá</option>
+                    <option value="Japão">Japão</option>
+                </select>
+            </label>
+        </div>
+    <input type="button" id="enviar" value="Enviar">
+    <div> <p id="res"></p> </div>
+
+    <script>
+        window.alert('Você está prestes a desembarcar no aeroporto quando é parado por um oficial. Ele desconfia de você e então pergunta...')
+
+        // eventos
+        var btnEnviar = window.document.getElementById('enviar')
+        enviar.addEventListener('click', aeroporto) // quando clica em enviar
+        enviar.addEventListener('mouseenter', entrar) // quando mouse entra 
+        enviar.addEventListener('mouseout', saida) // quando o mouse sai
+
+        //funções dos eventos
+        function entrar() {
+            enviar.style.background = 'gray'
+        }
+
+        function saida() {
+            enviar.style.background = 'white'
+        }
+
+        function aeroporto() {
+            enviar.style.background = 'gray'
+            var btnPais = window.document.getElementById('pais')
+            var resposta = window.document.getElementById('res')
+            var pais = btnPais.value // pega o valor definido no HTML
+            resposta.innerHTML = '' // define onde sairá o resultado 
+            if (pais != 'Brasil') { // se não for brasil adciona a resposta
+                resposta.innerHTML += `<p> <strong>MENTIRA!</strong> Você não veio do <strong>${pais}</strong> </p>`
+                window.alert('VOCÊ ESTÁ PRESO!')
+            } else { // se for brasil adciona essa resposta
+                resposta.innerHTML += `<p> <strong>CORRETO!</strong> Você veio do <strong>${pais}</strong>, pode passar.</p>`
+            }
+    }
+    </script>
+</body>
+</html>
