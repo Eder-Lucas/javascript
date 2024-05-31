@@ -5,4 +5,4 @@ if (país != 'Brasil') {// se não for diferente de Brasil
     console.log('Você é brasileiro')
 } else {
     console.log('Você é estrangeiro!')
-}
+}// condição composta
