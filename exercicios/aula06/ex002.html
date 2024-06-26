@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variaveis</title>
+    <title>Tratamento de Dados</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -29,11 +29,18 @@
     <p>Já me livrei da maldição!</p>
 
     <script>
-        var nome = window.prompt('Qual é seu nome?')
-        // variavel nome recebe o resultado do prompt que vai aparecer na janela
-        
-        window.alert('É um grande prazer em te conchecer, ' + nome + '!')
-        // Concatenação
+        // converte para número
+        var n1 = Number(window.prompt('Digite um número: ')) //string
+        var n2 = Number(window.prompt('Digite outro número: ')) // string
+        var s = n1 + n2
+        window.alert(`A soma entre ${n1} e ${n2} é igual a:  ${s}`)// template string
+        // (number + number) = adição
+        // (string + string) = concatenação
+        // Number.parseFloat(n) = números quebrados
+        // Number.parseInt(n) = números inteiros
+        // Number(n) = o javaScript entende se é inteiro ou quebrado
+        // String(n) = string para números
+        // n.toString() = string para números
     </script>
 </body>
 </html>

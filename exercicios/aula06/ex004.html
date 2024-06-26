@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alguns Atributos</title>
+    <title>Formatando Number</title>
     <style>
         body {
             background-color: black;
@@ -22,15 +22,18 @@
     
     <script>
         var nome = window.prompt('Qual é o seu nome?')
+        var idade = Number(window.prompt(`Olá, ${nome}! Qual sua idade?`) )
+        var carteira = Number(window.prompt('Quanto você tem na carteira?') )
+        var dinheiro = carteira.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+        // localiza a string e passa pro sistema monetario
+        var dinheiro_formatado = dinheiro.replace('.' , ',').replace(',' , '.')
+        // formata para nosso padrão de costume. De: 1,000.00 para: 1.000,50
 
-        document.write(`Olá, <strong>${nome}!</strong> Seu nome tem ${nome.length} letras.<br>`)
-        // diz a quantidade de letras
+        document.write(`Sua idade com duas casas decimais é: <strong>${idade.toFixed(2).replace('.' , ',')}</strong><br>`)
+        // deixa fixo duas casas decimais, e o replace troca seu ponto por uma virgula
 
-        document.write(`Seu nome em maiúsculas é <strong>${nome.toUpperCase()}</strong><br>`)
-        // deixa maiúsculo
-
-        document.write(`Seu nome em minúsculas é <strong>${nome.toLowerCase()}</strong>`)
-        // deixa minúsculo
+        document.write(`Você tem na carteira: <strong>${dinheiro_formatado}</strong>`)
+        // escreve o dinheiro já formatado
     </script>
 </body>
 </html>
