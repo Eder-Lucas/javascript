@@ -53,7 +53,7 @@ console.log(`f = ${f}`)// 3
 console.log("Auto-atribuições:")
 
 var n = 3
-n = n + 4// ou n += 4 / só funciona quando a variavel receba ela mesma
+n = n + 4// ou n += 4 / só funciona quando a variavel recebe ela mesma
 n -= 5// simplificado
 n = n + 4// completo
 console.log(`No final n valerá: ${n}`)
