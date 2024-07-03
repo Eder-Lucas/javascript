@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferença de QuerySelectorAll e QuerySelector</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        p {
+            font-size: 15pt;
+            padding: 0px 20px 0px 20px;
+        }
+
+        p.amarelo {
+            margin-bottom: 900px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="amarelo">Tudo está amarelo!</h1>
+    <p class="amarelo">Eu estou em amarelo!</p>
+
+    <h2 id="branco">Quase tudo está em amarelo...</h2>
+    <p id="verde">Eu estou em verde!</p>
+    
+    <script>
+        // QuerySelectorAll seleciona vários
+        var elemento_amarelo = window.document.querySelectorAll('.amarelo')
+
+        // função de iteração para manipular os elementos em QuerySelectorAll
+        elemento_amarelo.forEach(function(h1) {
+            h1.style.color = 'yellow'
+        })
+
+        // QuerySelector normal seleciona apenas um elemento e não usa iteração
+        var elemento_branco = window.document.querySelector('h2#branco')// um elemento
+        elemento_branco.style.color = 'white'
+
+        var elemento_verde = window.document.querySelector('p#verde')// outro elemento
+        elemento_verde.style.color = 'lime'
+    </script>
+</body>
+</html>
