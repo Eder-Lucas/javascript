@@ -11,6 +11,10 @@
             color: white;
             font: normal 14pt Arial;
         }
+
+        strong {
+            color: yellow;
+        }
     </style>
 </head>
 
@@ -24,7 +28,7 @@
         var corpo = window.document.body
         var p1 = window.document.getElementsByTagName('p')[0]
         // plural usa colchete, 0 é o primeiro
-        window.document.write('Está escrito assim: ' + p1.innerHTML)
+        window.document.write('Está escrito assim: ' + p1.innerHTML + '<br><br>')
         corpo.style.background = 'black'
         p1.style.color = 'yellow'
         // innerText pega sem formatação
@@ -38,6 +42,19 @@
         // recente
         var d = window.document.querySelector('div#msg')// css
         d.style.color = 'yellow'
+
+        var url = window.document.URL
+        var navegador = window.navigator.appName
+        var charset = window.document.charset
+
+        window.document.write('Podemos pegar configurações do site usando DOM: <br><br>')
+
+        window.document.write(`O charset usado é: <strong>${charset}</strong><br>`)
+
+        window.document.write(`O navegador se comporta como: <strong>${navegador}</strong><br>`)
+
+        window.document.write(`A URL do site é: <strong>${url}</strong>`)
+
     </script>
 </body>
 </html>
