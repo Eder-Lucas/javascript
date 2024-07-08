@@ -23,14 +23,20 @@
             text-align: center;
         }
 
-        div#area {
+        div.area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             margin: auto;
             margin-top: 20px;
-            font: bolder 16pt Arial;
-            background-color: yellow;
+            margin-bottom: 60px;
             width: 200px;
             height: 200px;
-            line-height: 200px;
+
+            font: bolder 16pt Arial;
+            background-color: yellow;  
+            line-height: 30px;
             text-align: center;
             border: 2px solid yellow;
             border-radius: 10px;
@@ -40,18 +46,30 @@
 
 <body>
     <h3>coloque o mouse, clique e tire o mouse</h1>
-    <div id="area">
+    <div class="area">
         <p>Interaja...</p>
     </div>
 
+    <h3>mova o mouse dentro do quadrado</h3>
+    <div class="area">
+        <p id="mensagem">Interaja...</p>
+        <p id="vezes-que-moveu"></p>
+    </div>
+
     <script>
-        var area = window.document.getElementById('area')
+        // Selecionando
+        var area = window.document.getElementsByTagName('div')[0]
+        var area2 = window.document.getElementsByTagName('div')[1]
+        var mensagem = window.document.getElementById
+        ('mensagem')
+        var vezes_que_moveu = window.document.getElementById('vezes-que-moveu')
 
         // pode ir direto no html
         area.addEventListener('click', clicar)        
         area.addEventListener('mouseenter', entrar)
         area.addEventListener('mouseout', sair)
-
+        area2.addEventListener('mousemove', mover)
+        
         function clicar() {// só executa quando clica
             area.innerText = 'Clicou!'
             area.style.background = 'black'
@@ -67,6 +85,13 @@
             area.style.background = 'yellow'
             area.style.color = 'black'
         }
+
+        var mexeu = 0
+        function mover() {// so executa quando o mouse está se movendo
+            mensagem.innerHTML = 'movendo...'
+            vezes_que_moveu.innerHTML =`mexeu ${mexeu += 1} vezes`
+        }
+
     </script>
 </body>
 </html>
