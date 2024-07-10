@@ -13,6 +13,7 @@ function clicar() {//quando clicar
     clicou = true//usuário clicou
     quantidade_clicks = clicks += 1//conta os clicks
     lamp.src = "./imagens/lampada-quebrada.png"//troca a imagem
+    lamp.alt = 'lâmpada-quebrada'//muda o texto alternativo
     msg.innerHTML = "Ops! <strong>Recarregue a página</strong> e tenha mais cuidado!"//texto indicativo
     console.log(`A lâmpada foi clicada e quebrou ${quantidade_clicks} vezes`)
 
@@ -24,6 +25,7 @@ function clicar() {//quando clicar
 function entrar() {//quando entra
     if (clicou == false) {//só executa quando a lâmpada NÃO está quebrada/clicada
         lamp.src = "./imagens/lampada-ligada.png"//troca a imagem
+        lamp.alt = 'lâmpada-ligada'//muda o texto alternativo
         console.log('A lâmpada ligou')
     }
 }
@@ -31,6 +33,7 @@ function entrar() {//quando entra
 function sair() {//quando sai
     if (!clicou) {//o operador "!" nega assim como a comparação anterior
         lamp.src = "./imagens/lampada-desligada.png"//troca a imagem
+        lamp.alt = 'lâmpada-desligada'//muda o texto alternativo
         console.log('A lâmpada desligou')
     }
 }
