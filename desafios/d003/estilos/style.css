@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body {
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    padding: 0px 20px;
+    font-size: 1.8em;
+}
+
+h2 {
+    padding: 0px 10px 20px 10px;
+    color: white;
+    font-size: 1.3em;
+}
+
+img {
+    width: 500px;
+    border-radius: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+p { 
+    font-weight: bold;
+    font-size: 1em;
+}
