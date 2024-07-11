@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>online e offline</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            width: 300px;
+            height: 100px;
+            background-color: #989292;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Com evento listener podemos saber quando o usuário está conectado ao wi-fi ou não</h1>
+    <h2>Você está:<strong id="status"></strong></h2>
+
+    <h1>Assim podemos gerenciar acessos para cada condição</h1>
+    <h2>Clique abaixo</h2>
+    <div id="caixa"><strong id="msg"></strong></div>
+
+    <script>
+        //seleciona os elementos
+        var statusNet = window.document.querySelector('strong#status')
+        var caixaInteração = window.document.querySelector('div#caixa')
+        var msg = window.document.querySelector('strong#msg')
+
+        caixaInteração.addEventListener('click', clicar)//evento click
+        function clicar() {           
+            if (navigator.onLine) {
+                var url = 'https://github.com/Eder-Lucas'
+                window.location.href = url
+                caixaInteração.style.background = 'lime'
+                msg.innerHTML = 'Navegação Permitida'
+            } else {
+                alert('Sem conexão com a internet')
+                caixaInteração.style.background = 'red'
+                msg.style.color = 'white'
+                msg.innerHTML = 'Navegação proibida'
+            }
+        }
+
+        //escuta as mudanças para offline e online
+        window.addEventListener('online', VerificaNet)
+        window.addEventListener('offline', VerificaNet)
+
+        function VerificaNet() {//analisa se o navegador está online ou offline
+            if (navigator.onLine) {//estando online
+                statusNet.style.color = 'lime'
+                statusNet.textContent = ' Online'
+
+                //reseta as configurações do click caso alguma permaneça
+                caixaInteração.style.background = ''//a cor torna a ser a mesma definida no CSS
+                msg.innerHTML = ''//o texto apaga
+            } else {//estando offline
+                statusNet.style.color = 'red'
+                statusNet.textContent = ' Offline'
+            }
+        }
+        //chama a função para executar dinamicamente assim que inicia a experiência
+        VerificaNet()
+
+        
+    </script>
+</body>
+
+</html>
