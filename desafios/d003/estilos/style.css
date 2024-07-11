@@ -19,9 +19,8 @@ h2 {
 }
 
 img {
-    width: 500px;
+    width: 200px;
     border-radius: 20px;
-    color: red;
     cursor: pointer;
 }
 
