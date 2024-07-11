@@ -46,8 +46,8 @@ function verificaNet() {
         console.log('Usuário online')//avisa que o usuário está com internet
         img.src = imagemOn.src//carregamento das imagens e o texto alternativo
         img.alt = imagemOn.alt
-        statusNet.innerHTML = ' Online'//coloca o status como online
-        msg.innerHTML = 'Você tem internet! O que você mais gosta de fazer com ela?'
+        statusNet.textContent = ' Online'//coloca o status como online
+        msg.textContent = 'Você tem internet! O que você mais gosta de fazer com ela?'
         statusNet.style.color = 'lime'//coloca a cor como verde para simbolizar que está online
         msg.style.color = 'lime'
     } 
@@ -55,8 +55,8 @@ function verificaNet() {
         console.log('Usuário offline')//avisa que o usuário está sem internet
         img.src = imagemOff.src//carregamento das imagens e o texto alternativo
         img.alt = imagemOff.alt        
-        statusNet.innerHTML = ' Offline'//troca o status por offline
-        msg.innerHTML = 'Nem dados movéis? Que tal jogar o Dinossauro do Chrome?'
+        statusNet.textContent = ' Offline'//troca o status por offline
+        msg.textContent = 'Nem dados movéis? Que tal jogar o Dinossauro do Chrome?'
         statusNet.style.color = 'red'//fica com cor vermelha para simbolizar que está offline
         msg.style.color = 'red'
     }}
