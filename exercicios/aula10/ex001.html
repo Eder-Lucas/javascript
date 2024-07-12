@@ -19,15 +19,18 @@
 
         h3 {
             margin-top: 20px;
+            padding: 0px 25px 0px 25px;
             color: white;
             text-align: center;
         }
 
         div.area {
+            /*centraliza no meio da div*/
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
             margin: auto;
             margin-top: 20px;
             margin-bottom: 60px;
@@ -35,63 +38,33 @@
             height: 200px;
 
             font: bolder 16pt Arial;
-            background-color: yellow;  
-            line-height: 30px;
+            background-color: yellow;
+            line-height: 30px;/*separa os dois textos na 2ª div*/
             text-align: center;
-            border: 2px solid yellow;
+            border: 1px solid yellow;
             border-radius: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
     <h3>coloque o mouse, clique e tire o mouse</h1>
-    <div class="area">
-        <p>Interaja...</p>
-    </div>
+        <div class="area">
+            <p>Interaja...</p>
+        </div>
 
-    <h3>mova o mouse dentro do quadrado</h3>
-    <div class="area">
-        <p id="mensagem">Interaja...</p>
-        <p id="vezes-que-moveu"></p>
-    </div>
+        <h3>mova o mouse dentro do quadrado</h3>
+        <div class="area">
+            <p id="mensagem">Interaja...</p>
+            <p id="vezes-que-moveu"></p>
+        </div>
 
-    <script>
-        // Selecionando
-        var area = window.document.getElementsByTagName('div')[0]
-        var area2 = window.document.getElementsByTagName('div')[1]
-        var mensagem = window.document.getElementById
-        ('mensagem')
-        var vezes_que_moveu = window.document.getElementById('vezes-que-moveu')
+        <h3>segure e solte o mouse</h3>
+        <div class="area">
+            <p>Interaja...</p>
+        </div>
 
-        // pode ir direto no html
-        area.addEventListener('click', clicar)        
-        area.addEventListener('mouseenter', entrar)
-        area.addEventListener('mouseout', sair)
-        area2.addEventListener('mousemove', mover)
-        
-        function clicar() {// só executa quando clica
-            area.innerText = 'Clicou!'
-            area.style.background = 'black'
-            area.style.color = 'white'
-        }
-
-        function entrar() {// só executa quando o mouse entra na div
-            area.innerText = 'Entrou!'
-        }
-
-        function sair() {// só executa quando o mouse sai da div
-            area.innerText = 'Saiu!'
-            area.style.background = 'yellow'
-            area.style.color = 'black'
-        }
-
-        var mexeu = 0
-        function mover() {// so executa quando o mouse está se movendo
-            mensagem.innerHTML = 'movendo...'
-            vezes_que_moveu.innerHTML =`mexeu ${mexeu += 1} vezes`
-        }
-
-    </script>
+        <script src="ex001.js"></script>
 </body>
 </html>
