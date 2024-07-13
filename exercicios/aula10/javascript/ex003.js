@@ -16,14 +16,16 @@ function clicar() {
         /*faz a caixa de interação voltar a suas configurações originais depois de um certo tempo caso o dispositivo não consiga por algum motivo( comum em dispositivos movéis )*/
         setTimeout(() => {
             caixaInteração.style.background = 'gray'
-            msg.innerHTML = ''
+            msg.textContent = ''
         }, 15000);//mantém a função rodando por 15s após isso reseta o texto e a cor
-    } else if (!navigator.onLine && temErro == false) {//se não tiver conectado ao wifi
+    }
+    else if (!navigator.onLine && temErro == false) {//se não tiver conectado ao wifi
         alert('Sem conexão com a internet')
         caixaInteração.style.background = 'red'
         msg.style.color = 'white'
-        msg.innerHTML = 'Navegação proibida'
-    } else {//quando tiver algum erro
+        msg.textContent = 'Navegação proibida'
+    }
+    else {//quando tiver algum erro
         alert('algum problema ocorreu')
     }
 }
@@ -37,14 +39,15 @@ function VerificaNet() {//analisa se o navegador está online ou offline
         console.log('página offline')
         statusNet.style.color = 'red'
         statusNet.textContent = ' Offline'
-    } else {//estando online
+    }
+    else {//estando online
         console.log('página online')
         statusNet.style.color = 'lime'
         statusNet.textContent = ' Online'
 
         //reseta as configurações do offline quando trocar para online
         caixaInteração.style.background = ''
-        msg.innerHTML = ''
+        msg.textContent = ''
     }
 }
 
@@ -57,10 +60,11 @@ window.onload = () => {
         //se não tiver erros
         console.log('função VerificaNet rodando sem problemas')
     } catch (error) {//se encontrar algum erro
-        console.error('Erro ao carregar a função', error)
-        statusNet.textContent = ' [Error]'
-        msg.textContent = '[Error]'
+        console.error('Erro ao carregar a função', error)//diz o erro pro console
+        //configurações em caso de erro
         alert('algum problema ocorreu')
+        statusNet.textContent = ' [Error]'
+        msg.textContent = '[Error]'       
         temErro = true//impossibilita a função clicar de funcionar
     }   
 }
