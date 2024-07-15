@@ -38,8 +38,8 @@ function verificaNumero() {//função de quando clicar
         num.textContent = 'digite um número válido'
         parImpar.textContent = ''
     }
-    //números pares quando são dividos por 2 restam 0
-    //a variavel analisa recebe o restante da divisão entre o que foi digitado por 2 
+    //números pares quando são divididos por 2 restam 0
+    //a variavel 'analisa' recebe o restante da divisão entre o que foi digitado por 2 
     else if (analisa === 0) {//se o restante for igual a 0 
         console.log('o número foi par')//é par
         parImpar.innerHTML = '<strong>É par.</strong>'
