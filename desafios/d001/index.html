@@ -61,37 +61,6 @@
     <input type="button" id="enviar" value="Enviar">
     <div> <p id="res"></p> </div>
 
-    <script>
-        window.alert('Você está prestes a desembarcar no aeroporto quando é parado por um oficial. Ele desconfia de você e então pergunta...')
-
-        // eventos
-        var btnEnviar = window.document.getElementById('enviar')
-        enviar.addEventListener('click', aeroporto) // quando clica em enviar
-        enviar.addEventListener('mouseenter', entrar) // quando mouse entra 
-        enviar.addEventListener('mouseout', saida) // quando o mouse sai
-
-        //funções dos eventos
-        function entrar() {
-            enviar.style.background = 'gray'
-        }
-
-        function saida() {
-            enviar.style.background = 'white'
-        }
-
-        function aeroporto() {
-            enviar.style.background = 'gray'
-            var btnPais = window.document.getElementById('pais')
-            var resposta = window.document.getElementById('res')
-            var pais = btnPais.value // pega o valor definido no HTML
-            resposta.innerHTML = '' // define onde sairá o resultado 
-            if (pais != 'Brasil') { // se não for brasil adciona a resposta
-                resposta.innerHTML += `<p> <strong>MENTIRA!</strong> Você não veio do <strong>${pais}</strong> </p>`
-                window.alert('VOCÊ ESTÁ PRESO!')
-            } else { // se for brasil adciona essa resposta
-                resposta.innerHTML += `<p> <strong>CORRETO!</strong> Você veio do <strong>${pais}</strong>, pode passar.</p>`
-            }
-    }
-    </script>
+    <script src="script/script.js"></script>
 </body>
 </html>
