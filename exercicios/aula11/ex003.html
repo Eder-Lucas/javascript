@@ -49,17 +49,18 @@
     <label for="txtvel">Velocidade do carro:
         <input type="number" name="txtvel" id="txtvel"> km/h
     </label>
-    <input type="button" id="txt" value="Verificar" onclick="calcular()">
+    <input type="button" id="txt" value="Verificar" onclick="calcular()"><!--chama a função quando clicar-->
     <div> <p id="res"><strong>Resultado:</strong></p> </div>
 
     <script>
-        function calcular() {
-            var vel = window.document.getElementById('txtvel')
-            var res = window.document.querySelector('p#res')
-            var velocidade = Number(vel.value)
-            res.innerHTML = `<p>Sua velocidade atual é de <strong>${velocidade}km/h</strong></p>`
+        function calcular() {//quando clicar
+            var vel = window.document.getElementById('txtvel')//seleciona a velocidade
+            var res = window.document.querySelector('p#res')//onde vai sair a resposta
+            var velocidade = Number(vel.value)//guarda o valor
+            res.innerHTML = `<p>Sua velocidade atual é de <strong>${velocidade}km/h</strong></p>`//mostra na tela
 
-            if (velocidade > 60) {
+            if (velocidade > 60) {//se for maior que 60km/h vai ser multado
+                //concatenado para não apagar a mensagem anterior
                 res.innerHTML += '<p>Você está <strong>MULTADO</strong> por excesso de velocidade'
             }
             res.innerHTML += '<p>Dirija sempre com <strong>cinto de segurança!</strong></p>'
