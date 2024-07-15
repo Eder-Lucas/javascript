@@ -19,7 +19,7 @@ function verificaNumero() {//função de quando clicar
     todo número inteiro quando é dividido por 1 resta 0
         3| 1
         3 1
-        0<--- resta 1
+        0<--- resta 0
     */
 
    //se o valor digitado quando dividido por 1 reste um número diferente de 0 e se estiver válido 
