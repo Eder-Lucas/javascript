@@ -66,11 +66,8 @@ input#btn {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;/*remove o fundo ao clicar no botão em dispositivos movéis*/
     transition: 0.1s ease;
-}
-
-input#btn:focus {
-    outline: none;
 }
 
 div {
