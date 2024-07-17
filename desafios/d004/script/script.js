@@ -28,7 +28,7 @@ function verificaNumero() {//função de quando clicar
         int.innerHTML = `Número convertido para: <strong>${valorInt}</strong>`//mostra o valor convertido para inteiro
     } else {//se não apenas não mostra nada
         console.log('o número foi inteiro')
-        int.textContent = ''
+        int.innerHTML = ''
     }
     
     
@@ -36,7 +36,7 @@ function verificaNumero() {//função de quando clicar
     if (Number.isNaN(valor)){
         console.log('o número não foi válido')
         num.textContent = 'digite um número válido'
-        parImpar.textContent = ''
+        parImpar.innerHTML = ''
     }
     //números pares quando são divididos por 2 restam 0
     //a variavel 'analisa' recebe o restante da divisão entre o que foi digitado por 2 
