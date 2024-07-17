@@ -69,6 +69,10 @@ input#btn {
     transition: 0.1s ease;
 }
 
+input#btn:focus {
+    outline: none;
+}
+
 div {
     margin-top: 25px;
     font-size: 1.2em;
