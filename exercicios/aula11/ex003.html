@@ -12,6 +12,7 @@
             color: white;
             text-align: center;
             font: normal 16pt Arial;
+            -webkit-tap-highlight-color: transparent;
         }
 
         h1 {
@@ -21,7 +22,7 @@
         label > input {
             width: 70px;
             height: 30px;
-            text-align: center;
+            border-radius: 8px;
             outline: none;
         }
 
@@ -37,7 +38,7 @@
             cursor: pointer;
         }
 
-        div > p {
+        strong {
             color: yellow;
         }
     </style>
@@ -49,10 +50,15 @@
     <label for="txtvel">Velocidade do carro:
         <input type="number" name="txtvel" id="txtvel"> km/h
     </label>
-    <input type="button" id="txt" value="Verificar" onclick="calcular()"><!--chama a função quando clicar-->
-    <div> <p id="res"><strong>Resultado:</strong></p> </div>
+    <input type="button" id="txt" value="Verificar"><!--chama a função quando clicar-->
+    <div>
+        <p id="res"><strong>Resultado:</strong></p>
+    </div>
 
     <script>
+        var numero = document.querySelector('#txt')
+
+        numero.addEventListener('click', calcular)
         function calcular() {//quando clicar
             var vel = window.document.getElementById('txtvel')//seleciona a velocidade
             var res = window.document.querySelector('p#res')//onde vai sair a resposta
@@ -66,6 +72,19 @@
             res.innerHTML += '<p>Dirija sempre com <strong>cinto de segurança!</strong></p>'
         }
 
+        //animação ao clicar
+        numero.addEventListener('click', () => {
+            numero.style.background = 'gray'//muda a cor
+            numero.style.transition = '0.3s'//transição
+            numero.style.background = 'gray'//muda o fundo para cinza
+            numero.style.borderRadius = '8px'//borda arredonda 8px
+
+            //reseta as configurações acima
+            setTimeout(() => {
+                numero.style.background = ''
+                numero.style.borderRadius = ''
+            }, 110)//após 110 milissegundos
+        })
     </script>
 </body>
 </html>
