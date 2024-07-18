@@ -1,5 +1,5 @@
 var agora = new Date()
-var dia_da_semana = agora.getDay()
+var dia_da_semana = agora.getDay()//pega os dias da semana
 /*  
     getDay()
     0 = domingo
@@ -11,12 +11,12 @@ var dia_da_semana = agora.getDay()
     6 = sabado
 */
 
-// testar valores pontuais
+//testar valores pontuais
 
-switch (dia_da_semana) {
-    case 0:
+switch (dia_da_semana) {//testa a expressão dia_da_semana
+    case 0://caso seja 0
         console.log('Hoje é Domingo')
-        break;
+        break;//necessario o uso de break no final de cada caso
     case 1:
         console.log('Hoje é Segunda-feira')
         break;
@@ -36,7 +36,7 @@ switch (dia_da_semana) {
         console.log('Hoje é Sábado')
         break;
     
-    default:
+    default://caso não seja nenhum dos casos anteriores
         console.log('[ERROR] Dia inválido!')
         break;
 }
