@@ -12,6 +12,7 @@ function verificaNumero() {//função de quando clicar
     var valorInt = Math.round(valor)//caso não seja inteiro será convertido
     var analisa = valorInt % 2//Salva o resultado do resto da divisão por 2
     num.innerHTML = `Número: <strong>${valor}</strong>`//mostra o número no HTML
+    num.style.color = 'white'//cor branca
     console.log(`valor digitado: ${valor}`)
     console.log(`valor convertido para inteiro: ${valorInt}`)
     console.log(`quando divido por 2 restou: ${analisa}`)
@@ -22,7 +23,7 @@ function verificaNumero() {//função de quando clicar
         0<--- resta 0
     */
 
-   //se o valor digitado quando dividido por 1 reste um número diferente de 0 e se estiver válido 
+    //se o valor digitado quando dividido por 1 reste um número diferente de 0 e se estiver válido 
     if (valor % 1 != 0 && !Number.isNaN(valor)) {
         console.log('O número digitado não foi inteiro')//avisa que não é inteiro
         int.innerHTML = `Número convertido para: <strong>${valorInt}</strong>`//mostra o valor convertido para inteiro
@@ -31,11 +32,11 @@ function verificaNumero() {//função de quando clicar
         int.innerHTML = ''
     }
     
-    
     //se o que for digitado não for válido como número ou qualquer outra situação
-    if (Number.isNaN(valor)){
+    if (Number.isNaN(valor)) {
         console.log('o número não foi válido')
         num.textContent = 'digite um número válido'
+        num.style.color = 'red'//muda a cor para vermelho
         parImpar.innerHTML = ''
     }
     //números pares quando são divididos por 2 restam 0
@@ -47,5 +48,18 @@ function verificaNumero() {//função de quando clicar
     else {//se não restar 0
         console.log('o número foi ímpar')//é impar
         parImpar.innerHTML = '<strong>É ímpar.</strong>'
-    }   
+    }
 }
+
+//quando clicar em enviar carrega essa animação
+btn.addEventListener('click', () => {
+    btn.style.transition = '0.3s'//transição
+    btn.style.background = 'gray'//muda o fundo para cinza
+    btn.style.borderRadius = '8px'//borda arredonda 8px
+
+    //reseta as configurações acima
+    setTimeout(() => {
+        btn.style.background = ''
+        btn.style.borderRadius = ''
+    }, 110)//após 110 milissegundos
+})

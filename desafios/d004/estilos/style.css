@@ -4,6 +4,7 @@ body {
     background-color: black;
     color: white;
     text-align: center;
+    -webkit-tap-highlight-color: transparent;/*tira o destaque de dispositivos móveis*/
 }
 
 h1 {
@@ -15,6 +16,7 @@ input#numero {
     width: 80px;
     height: 30px;
     outline: none;
+    border: none;
     font-size: 1.1em;
     border-radius: 6px;
 }
