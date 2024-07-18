@@ -1,7 +1,8 @@
 var lamp = window.document.querySelector('#lampada')//seleciona a imagem
 var msg = window.document.querySelector('#mensagem')//seleciona o parágrafo
+var recar = window.document.querySelector('#recarregar')//seleciona o parágrafo de recarregar a página
 
-//eventos
+//eventos da imagem
 lamp.addEventListener('mouseenter', entrar)
 lamp.addEventListener('mouseout', sair)
 lamp.addEventListener('click', clicar)
@@ -14,7 +15,8 @@ function clicar() {//quando clicar
     quantidade_clicks = clicks += 1//conta os clicks
     lamp.src = "./imagens/lampada-quebrada.png"//troca a imagem
     lamp.alt = 'lâmpada-quebrada'//muda o texto alternativo
-    msg.innerHTML = "Ops! <strong>Recarregue a página</strong> e tenha mais cuidado!"//texto indicativo
+    msg.innerHTML = "Ops! Recarregue a página e tenha mais cuidado"//texto indicativo
+    recar.textContent = 'Recarregar'//mostra a opção de recarregar
     console.log(`A lâmpada foi clicada e quebrou ${quantidade_clicks} vezes`)
 
     if (clicks >= 2) {//apartir de 2 clicks essa mensagem se repete
@@ -37,3 +39,17 @@ function sair() {//quando sai
         console.log('A lâmpada desligou')
     }
 }
+
+//quando clicar para recarregar
+recar.addEventListener('click', () => {
+    msg.innerHTML = ''//apaga o texto indicativo
+    recar.textContent = 'Recarregando...'//mostra que ta carregando
+    recar.style.transition = '1s ease-in-out'//animação
+    recar.style.textDecoration = 'none'//tira a linha inferior
+    recar.style.fontSize = '1.4em'//aumenta o texto
+    recar.style.color = 'white'//muda a cor pra branco
+
+    setTimeout( () => {//após 2s finalmente recarrega a página
+        location.reload()
+    }, 2000)
+})

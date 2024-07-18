@@ -5,6 +5,7 @@ body {
     text-align: center;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;/*tira o destaque de dispositivos móveis*/
 }
 
 h1 {
@@ -21,12 +22,17 @@ img {
     margin-top: 60px;
     width: 200px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 p {
     font-size: 1.1em;
 }
 
-strong {
+p#recarregar {
+    font-weight: bold;
+    font-size: 1.15em;
     color: yellow;
+    text-decoration: underline;
+    cursor: pointer;
 }
