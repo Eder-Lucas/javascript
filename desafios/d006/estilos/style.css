@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+    -webkit-tap-highlight-color: transparent;
     background-color: black;
     color: white;
     font: normal 15pt Arial;
@@ -14,16 +15,32 @@ section {
     margin: auto;
     padding: 15px;
     width: 500px;
+    text-align: center;
     color: black;
     background-color: white;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 10px;
+}
+
+section img {
+    box-shadow: 4px 6px 20px 0px rgba(0, 0, 0, 0.61);
+    border-radius: 250px;
 }
 
 footer {
     text-align: center;
+    font-weight: bold;
     font-style: italic;
+}
+
+footer p {
+    margin-bottom: 10px;
 }
 
 footer a {
     color: white;
+}
+
+footer img {
+    width: 50px;
 }
