@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
+/*telas maiores que 768px*/
 body {
+    margin: 0px;
+    padding: 0px;
     -webkit-tap-highlight-color: transparent;
     background-color: black;
     color: white;
@@ -14,7 +17,7 @@ header {
 section {
     margin: auto;
     padding: 15px;
-    width: 500px;
+    max-width: 500px;
     text-align: center;
     color: black;
     background-color: white;

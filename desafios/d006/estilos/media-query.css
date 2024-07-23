@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/*landscape e dispositivos móveis*/
+@media screen and (max-width: 768px) {
+    section img {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    section {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.234);
+    }
+}
+
+@media screen and (max-width: 270px) {
+    header {
+        font-size: 8vw;
+    }
+
+    section {
+        font-size: 8vw;
+    }
+
+    section img {
+        width: 80%;
+    }
+
+    footer {
+        font-size: 9vw;
+    }
+
+    footer img {
+        width: 22%;
+    }
+}
