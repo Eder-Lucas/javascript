@@ -58,15 +58,18 @@ function atualizaHora() {
     }
 }
 
-document.querySelector('#link').addEventListener('click', function() {
+document.querySelector('#link').addEventListener('click', function () {
     this.style.width = '40px'
     this.style.transition = '.1s ease-in-out'
     this.style.borderRadius = '20px'
 
-    setTimeout( () => {
+    setTimeout(() => {
         this.style.width = ''
         this.style.borderRadius = ''
-        location.href = 'https://github.com/Eder-Lucas'
+        setTimeout(() => {
+            window.open('https://github.com/Eder-Lucas', '_blank')
+        },100)
+
     }, 90)
 })
 
