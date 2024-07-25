@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-/*telas maiores que 768px*/
 body {
     margin: 0px;
     padding: 0px;
@@ -46,4 +45,5 @@ footer a {
 
 footer img {
     width: 50px;
+    cursor: pointer;
 }
