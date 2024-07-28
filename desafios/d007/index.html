@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>desafio 7</title>
+    <title>Verificador de Idade</title>
+    <link rel="stylesheet" href="estilos/style.css">
 </head>
 <body>
-    <h1>desafio 7</h1>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+
+    <section>
+        <div>
+            <p>Ano de Nascimento:
+                <input type="number" name="Ano" id="ano" min="0">
+            </p>
+
+            <p>Sexo:
+                <input type="radio" name="sex" id="masc" checked>
+                <label for="masc">Masculino</label>
+
+                <input type="radio" name="sex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+
+            <p id="btn">
+                <input type="submit" value="Verificar" id="verificar">
+            </p>
+        </div>
+
+        <div id="res"></div>
+    </section>
+
+    <footer>
+        <p>Acesse meu GitHub:</p>
+        <img id="linkGitHub" src="imagens/github.png" alt="icone do github">
+    </footer>
+
+    <script src="script/script.js"></script>
 </body>
 </html>
