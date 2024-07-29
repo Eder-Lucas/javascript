@@ -61,3 +61,17 @@ document.querySelector('input#verificar').addEventListener('click', function () 
         res.appendChild(img)
     }
 })
+
+document.querySelector('#linkGitHub').addEventListener('click', function () {
+    this.style.width = '40px'
+    this.style.transition = '.1s ease-in-out'
+    this.style.borderRadius = '20px'
+
+    setTimeout(() => {
+        this.style.width = ''
+        this.style.borderRadius = ''
+        setTimeout(() => {
+            window.open('https://github.com/Eder-Lucas', '_blank')
+        }, 100)
+    }, 90)
+})
