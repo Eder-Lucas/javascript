@@ -57,9 +57,19 @@ document.querySelector('input#verificar').addEventListener('click', function () 
         }
         res.style.textAlign = 'center'
         res.style.color = ''
-        res.innerHTML = `Detectamos ${genero} com ${idade} anos`
+        res.innerHTML = `<p>Detectamos ${genero} com ${idade} anos</p>`
         res.appendChild(img)
     }
+})
+
+document.querySelector('#verificar').addEventListener('click', function () {
+    this.style.background = '#1874ffde'
+    this.style.borderRadius = '25px'
+
+    setTimeout( () => {
+        this.style.background = ''
+        this.style.borderRadius = ''
+    }, 90)
 })
 
 document.querySelector('#linkGitHub').addEventListener('click', function () {
