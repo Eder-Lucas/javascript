@@ -9,11 +9,13 @@ body {
 
 header {
     text-align: center;
+    color: yellow;
 }
 
 section {
     margin: auto;
     padding: 15px;
+    max-height: 550px;
     max-width: 500px;
     color: black;
     text-align: center;
@@ -27,6 +29,7 @@ input#ano::-webkit-inner-spin-button {
 }
 
 input#ano {
+    max-width: 160px;
     margin-bottom: 8px;
     font-weight: bold;
     font-size: 0.9em;
@@ -48,7 +51,7 @@ input[type="radio"] + label {
     padding: 8px;
     margin-left: 10px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 2px solid #1874ff;
     cursor: pointer;
     transition: 0.2s ease;
@@ -57,17 +60,15 @@ input[type="radio"] + label {
 input[type="radio"]:checked + label {
     background-color: #1874ff;
     color: white;
-    border-radius: 8px;
 }
 
 input[type="radio"]:hover + label {
     opacity: 0.8;
-    border-radius: 8px;
 }
 
 p#btn {
     margin-top: 35px;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
