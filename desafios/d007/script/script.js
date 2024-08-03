@@ -1,10 +1,17 @@
-document.querySelector('input#verificar').addEventListener('click', function () {
+var btnVeri = document.querySelector('input#verificar')
+btnVeri.addEventListener('click', verificaIdade)
+
+function verificaIdade() {
     var anoAtual = new Date().getFullYear()
     var anoDigitado = document.querySelector('input#ano')
     var res = document.querySelector('div#res')
 
     var img = document.createElement('img')
     img.setAttribute('id', 'foto')
+
+    function formata_texto_do_res(idade, genero) {
+        return `Detectado ${genero === 'homem' ? 'um' : 'uma'} ${genero} com ${idade} ${idade === 1 || idade === 0 ? 'ano' : 'anos'}`;
+    }
 
     if (anoDigitado.value > anoAtual || anoDigitado.value <= 0) {
         res.style.textAlign = 'center'
@@ -15,13 +22,11 @@ document.querySelector('input#verificar').addEventListener('click', function () 
         var sexo = document.getElementsByName('sexo')
         var idade = anoAtual - Number(anoDigitado.value)
         var genero = ''
-
-        res.style.textAlign = 'center'
         res.style.color = ''
 
         if (sexo[0].checked) {
             genero = 'homem'
-            res.innerHTML = `<p>Detectado um ${genero} com ${idade} anos</p>`
+            res.innerHTML = `<p>${formata_texto_do_res(idade, genero)}</p>`
 
             if (idade >= 0 && idade <= 3) {
                 img.setAttribute('src', 'imagens/bebe-masc.png')
@@ -47,7 +52,7 @@ document.querySelector('input#verificar').addEventListener('click', function () 
 
         else if (sexo[1].checked) {
             genero = 'mulher'
-            res.innerHTML = `<p>Detectado uma ${genero} com ${idade} anos</p>`
+            res.innerHTML = `<p>${formata_texto_do_res(idade, genero)}</p>`
 
             if (idade >= 0 && idade <= 3) {
                 img.setAttribute('src', 'imagens/bebe-fem.png')
@@ -73,15 +78,15 @@ document.querySelector('input#verificar').addEventListener('click', function () 
         }
         res.appendChild(img)
     }
-})
+}
 
-document.querySelector('#verificar').addEventListener('click', function () {
-    this.style.background = '#1874ffde'
-    this.style.borderRadius = '25px'
+btnVeri.addEventListener('click', function () {
+    btnVeri.style.background = '#1874ffde'
+    btnVeri.style.borderRadius = '25px'
 
     setTimeout(() => {
-        this.style.background = ''
-        this.style.borderRadius = ''
+        btnVeri.style.background = ''
+        btnVeri.style.borderRadius = ''
     }, 90)
 })
 
