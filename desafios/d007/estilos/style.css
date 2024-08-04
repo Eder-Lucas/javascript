@@ -23,6 +23,12 @@ section {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 10px;
 }
+
+section img {
+    box-shadow: 4px 6px 20px 0px rgba(0, 0, 0, 0.61);
+    border-radius: 250px;
+}
+
 /*seleciona todos os input do tipo number
     mesmo que: input#ano{} neste caso
 */
