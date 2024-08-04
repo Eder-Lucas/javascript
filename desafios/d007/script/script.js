@@ -11,7 +11,7 @@ function verificaIdade() {//configuração da função ao clicar
     /* HTML >>> <img id="foto" src="" alt=""> */
 
     //valida o valor inserido como válido ou inválido
-    if (isNaN(anoDigitado) || anoDigitado.value > anoAtual || anoDigitado.value <= 0) {
+    if (isNaN(anoDigitado.value) || anoDigitado.value > anoAtual || anoDigitado.value <= 0) {
         //se o valor não for um número ou maior que o ano atual ou menor que 0
         res.style.textAlign = 'center'
         res.style.color = 'red'
