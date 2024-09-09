@@ -1,7 +1,24 @@
 var inputInicio = document.querySelector('input#inicio')
-var inputFim = document.querySelector('input#fim')
 var inputPasso = document.querySelector('input#passo')
+var inputFim = document.querySelector('input#fim')
 var res = document.querySelector('div#res')
+
+var campos = document.querySelectorAll('input[type="number"]')
+campos.forEach(function (input) {
+    input.addEventListener('input', () => {
+        if (input.value !== '' && !isNaN(Number(input.value))) {
+            input.style.borderBottom = ''
+        } else {
+            input.style.borderBottom = '2px solid red'
+        }
+    })
+})
+
+var contar = document.querySelector('input#contar')
+contar.addEventListener('click', () => {
+    contagem()
+    animationClick()
+})
 
 function contagem() {
     var inicio = Number(inputInicio.value)
@@ -10,22 +27,15 @@ function contagem() {
     let resultado = ''
     res.innerHTML = ''
 
-    var campos = document.querySelectorAll('input[type="number"]')
     campos.forEach(function (input) {
-        var valor = input.value
         input.style.borderBottom = ''
 
-        if (valor === '' || isNaN(Number(valor))) {
+        if (input.value === '' || isNaN(Number(input.value))) {
             input.style.borderBottom = '2px solid red'
         }
-
         if (passo !== 0 && fim !== 0) {
             inputInicio.style.borderBottom = ''
         }
-
-        input.addEventListener('focus', () => {
-            input.style.borderBottom = ''
-        })
     })
 
     if (fim === 0) {
@@ -33,10 +43,10 @@ function contagem() {
     } else if (fim <= inicio) {
         res.innerHTML = '<p class="erro">O valor de <strong>fim</strong> não pode ser <strong>menor ou igual</strong> ao inicio</p>'
         inputFim.style.borderBottom = '2px solid red'
+        inputInicio.style.borderBottom = '2px solid red'
     }
     else if (passo === 0) {
         alert('O valor de passo não pode ser 0. Considerando passo igual a 1')
-        inputInicio.style.borderBottom = ''
         inputPasso.value = 1
         passo = 1
         for (inicio; inicio <= fim; inicio += passo) {
@@ -55,16 +65,10 @@ function animationClick() {
     contar.style.background = '#94999d3e'
     contar.style.transition = '.3s ease'
     setTimeout(() => {
-       contar.style.background = '' 
+        contar.style.background = ''
     }, 100);
-    
-}
 
-var contar = document.querySelector('input#contar')
-contar.addEventListener('click', () => {
-    contagem()
-    animationClick()
-})
+}
 
 document.querySelector('img#linkGitHub').addEventListener('click', function () {
     this.style.width = '40px'
