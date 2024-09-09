@@ -22,6 +22,10 @@ function contagem() {
         if (passo !== 0 && fim !== 0) {
             inputInicio.style.borderBottom = ''
         }
+
+        input.addEventListener('focus', () => {
+            input.style.borderBottom = ''
+        })
     })
 
     if (fim === 0) {
