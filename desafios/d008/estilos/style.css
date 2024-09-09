@@ -22,7 +22,7 @@ section {
     background-color: white;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 10px;
-}
+}   
 
 section img {
     box-shadow: 4px 6px 20px 0px rgba(0, 0, 0, 0.61);
@@ -34,18 +34,49 @@ section label {
     padding-top: 15px;
 }
 
-section input[type=number] {
+section input[type="number"] {
     margin-left: 4px;
+    width: 150px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
 }
 
-div p.erro {
+section input#inicio {
+    width: 159px;
+}
+
+section input#fim {
+    width: 172.5px;
+}
+
+section div#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section input[type="submit"] {
+    padding: 10px;
+    width: 80px;
+    font-variant: small-caps;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    background-color: #94999daa;
+    cursor: pointer;
+}
+
+div#res {text-align: center;}
+
+div#res p.erro {
+    margin-top: 0px;
+    margin-bottom: 10px;
     color: red;
     font-weight: 500;
 }
 
-div p.erro > strong {
-    font-weight: bolder;
-}
+div#res p.erro > strong {font-weight: bolder;}
 
 footer {
     text-align: center;

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 768px) {
+    section input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    section {
+        border-radius: 0px;
+        font-size: 0.9em;
+    }
+}
