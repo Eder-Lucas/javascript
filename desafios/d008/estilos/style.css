@@ -11,6 +11,7 @@ body {
 
 header {
     text-align: center;
+    color: yellow;
 }
 
 section {
@@ -26,6 +27,24 @@ section {
 section img {
     box-shadow: 4px 6px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 250px;
+}
+
+section label {
+    display: flex;
+    padding-top: 15px;
+}
+
+section input[type=number] {
+    margin-left: 4px;
+}
+
+div p.erro {
+    color: red;
+    font-weight: 500;
+}
+
+div p.erro > strong {
+    font-weight: bolder;
 }
 
 footer {
