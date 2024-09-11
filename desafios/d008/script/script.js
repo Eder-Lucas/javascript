@@ -3,62 +3,44 @@ var inputPasso = document.querySelector('input#passo')
 var inputFim = document.querySelector('input#fim')
 var res = document.querySelector('div#res')
 
-var campos = document.querySelectorAll('input[type="number"]')
-campos.forEach(function (input) {
-    input.addEventListener('input', () => {
-        if (input.value !== '' && !isNaN(Number(input.value))) {
-            input.style.borderBottom = ''
-        } else {
-            input.style.borderBottom = '2px solid red'
+function contagem() {
+    var valid = true
+    res.innerHTML = ''
+    
+    campos.forEach(function (input) {
+        input.style.borderBottom = ''
+        
+        if (input.value.length == 0 || isNaN(Number(input.value.length))) {
+            input.style.borderBottom = '1px solid red'
+            valid = false
         }
     })
-})
+ 
+    if (valid === false) {
+        res.innerHTML = '<p class="erro"><strong>Preencha os campos corretamente</strong></p>'
+        return
+    }
 
-var contar = document.querySelector('input#contar')
-contar.addEventListener('click', () => {
-    contagem()
-    animationClick()
-})
-
-function contagem() {
     var inicio = Number(inputInicio.value)
     var fim = Number(inputFim.value)
     var passo = Number(inputPasso.value)
-    let resultado = ''
-    res.innerHTML = ''
 
-    campos.forEach(function (input) {
-        input.style.borderBottom = ''
-
-        if (input.value === '' || isNaN(Number(input.value))) {
-            input.style.borderBottom = '2px solid red'
-        }
-        if (passo !== 0 && fim !== 0) {
-            inputInicio.style.borderBottom = ''
-        }
-    })
-
-    if (fim === 0) {
-        res.innerHTML = '<p class="erro"><strong>Preencha os campos corretamente</strong></p>'
-    } else if (fim <= inicio) {
-        res.innerHTML = '<p class="erro">O valor de <strong>fim</strong> não pode ser <strong>menor ou igual</strong> ao inicio</p>'
-        inputFim.style.borderBottom = '2px solid red'
-        inputInicio.style.borderBottom = '2px solid red'
-    }
-    else if (passo === 0) {
-        alert('O valor de passo não pode ser 0. Considerando passo igual a 1')
+    if (passo <= 0) {
+        alert('O valor de passo não pode ser igual ou menor do que zero. Considerando passo como 1')
         inputPasso.value = 1
         passo = 1
-        for (inicio; inicio <= fim; inicio += passo) {
-            resultado += `${inicio} `
-        }
-        res.innerHTML = resultado
-    } else {
-        for (inicio; inicio <= fim; inicio += passo) {
-            resultado += `${inicio} `
-        }
-        res.innerHTML = resultado
     }
+
+    if (inicio < fim) {
+        for (let i = inicio; i <= fim; i += passo) {
+            res.innerHTML += `${i} \u{1F449}`
+        }
+    } else {
+        for (let i = inicio; i >= fim; i -= passo) {
+            res.innerHTML += `${i} \u{1F449}`
+        }
+    }
+    res.innerHTML += '\u{1F3C1}'
 }
 
 function animationClick() {
@@ -69,6 +51,27 @@ function animationClick() {
     }, 100);
 
 }
+
+var campos = document.querySelectorAll('input[type="number"]')
+campos.forEach(function (input) {
+    input.addEventListener('input', () => {
+        if (input.value !== '' && !isNaN(Number(input.value))) {
+            input.style.borderBottom = ''
+        } else {
+            input.style.borderBottom = '1px solid red'
+        }
+
+        if (inputFim.value !== '' && inputInicio.value !== '' && inputPasso.value !== '') {
+            res.innerHTML = ''
+        }
+    })
+})
+
+var contar = document.querySelector('input#contar')
+contar.addEventListener('click', () => {
+    contagem()
+    animationClick()
+})
 
 document.querySelector('img#linkGitHub').addEventListener('click', function () {
     this.style.width = '40px'
@@ -83,3 +86,13 @@ document.querySelector('img#linkGitHub').addEventListener('click', function () {
         }, 100)
     }, 90)
 })
+
+window.onload = function () {
+    inputFim.focus()
+    window.document.body.classList.add('fade')
+    setTimeout(() => {
+        window.document.body.classList.add('visi')
+    }, 250)
+
+    res.innerHTML = '<p class="happy">Divirta-se!</p>'
+}
