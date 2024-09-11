@@ -9,7 +9,6 @@ function contagem() {
     
     campos.forEach(function (input) {
         input.style.borderBottom = ''
-        
         if (input.value.length == 0 || isNaN(Number(input.value.length))) {
             input.style.borderBottom = '1px solid red'
             valid = false
@@ -88,7 +87,7 @@ document.querySelector('img#linkGitHub').addEventListener('click', function () {
 })
 
 window.onload = function () {
-    inputFim.focus()
+    inputInicio.focus()
     window.document.body.classList.add('fade')
     setTimeout(() => {
         window.document.body.classList.add('visi')
