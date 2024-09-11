@@ -4,6 +4,14 @@
     section input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
+    
+    section input[type="submit"]:hover {
+        opacity: 1;
+    }
+
+    footer img:hover {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 530px) {

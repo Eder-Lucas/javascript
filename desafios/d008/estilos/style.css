@@ -14,11 +14,21 @@ header {
     color: yellow;
 }
 
+.fade {
+    opacity: 0;
+}
+
+.visi {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
 section {
     margin: auto;
     padding: 15px;
     max-width: 500px;
     color: black;
+    font-variant: small-caps;
     background-color: white;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 10px;
@@ -40,6 +50,7 @@ section input[type="number"] {
     outline: none;
     border: none;
     border-bottom: 1px solid black;
+    transition: border-bottom .3s ease;
 }
 
 section input#inicio {
@@ -67,6 +78,10 @@ section input[type="submit"] {
     cursor: pointer;
 }
 
+section input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
 div#res {text-align: center;}
 
 div#res p.erro {
@@ -74,6 +89,14 @@ div#res p.erro {
     margin-bottom: 10px;
     color: red;
     font-weight: 500;
+}
+
+div#res p.happy {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: bolder;
+    color: #09b709;
 }
 
 div#res p.erro > strong {font-weight: bolder;}
@@ -95,4 +118,8 @@ footer a {
 footer img {
     width: 50px;
     cursor: pointer;
+}
+
+footer img:hover {
+    opacity: 0.8;
 }
