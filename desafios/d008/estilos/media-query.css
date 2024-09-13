@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @media screen and (max-width: 768px) {
+    /*retira as setas do tipo number*/
     section input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }

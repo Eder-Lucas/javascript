@@ -14,15 +14,6 @@ header {
     color: yellow;
 }
 
-.fade {
-    opacity: 0;
-}
-
-.visi {
-    opacity: 1;
-    transition: opacity 1s ease;
-}
-
 section {
     margin: auto;
     padding: 15px;
@@ -122,4 +113,14 @@ footer img {
 
 footer img:hover {
     opacity: 0.8;
+}
+
+/*estilos usados no arquivo JavaScript*/
+.fade {
+    opacity: 0;
+}
+
+.visi {
+    opacity: 1;
+    transition: opacity 1s ease;
 }
