@@ -26,6 +26,13 @@ section {
     border-radius: 10px;
 }
 
+select {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 300px;
+}
+
 footer {
     text-align: center;
     font-weight: bold;
