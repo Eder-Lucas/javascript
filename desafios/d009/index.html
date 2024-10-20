@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabuada</title>
     <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/media-query.css">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -15,9 +17,9 @@
 
     <section>
         <div id="form">
-            <label for="num">Número:
-                <input type="number" name="txtn" id="num">
-            </label>
+            <label for="num">Número:</label>
+                <input type="number" name="txtn" id="num" aria-label="preencha com um número para gerar uma tabuada">
+            
 
             <input type="submit" id="gerar" value="Gerar tabuada">
         </div>
@@ -29,7 +31,7 @@
 
             <ul id="ul"></ul>
 
-            <p>digite um número</p>
+            <p>Digite um número</p>
         </div>
     </section>
 

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 768px) {
+    section input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+@media screen and (max-width: 532px) {
+    section {
+        border-radius: 0px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    header > h1 {
+        font-size: 10vw;
+    }
+
+    div#form > label {
+        font-size: 5.5vw;
+    }
+
+    input[type="number"] {
+        font-size: 3.5vw;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 4vw;
+    }
+
+    p {
+        font-size: 5vw;
+    }
+
+    footer img {
+        width: 15%;
+    }
+}

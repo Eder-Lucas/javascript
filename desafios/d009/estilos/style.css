@@ -22,16 +22,59 @@ section {
     text-align: center;
     font-variant: small-caps;
     background-color: white;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.61);
     border-radius: 10px;
 }
 
+input[type="number"] {
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid;
+}
+
+input[type="submit"] {
+    margin-left: 10px;
+    padding: 8px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: rgba(184, 180, 180, 0.641);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(180, 176, 176, 0.363);
+}
+
 select {
+    width: 300px;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 5px;
     padding: 5px;
-    width: 300px;
+    outline: none;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 9px 1px #00000063;
+}
+
+select > option {
+    padding: 4px;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+ul > li {
+    padding: 4px;
+    font-weight: bold;
+}
+
+p {
+    font-variant: normal;
 }
 
 footer {
