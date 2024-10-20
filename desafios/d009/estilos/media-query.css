@@ -4,6 +4,10 @@
     section input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
+
+    input[type="submit"]:hover {
+        background-color: rgba(184, 180, 180, 0.641);
+    }
 }
 
 @media screen and (max-width: 532px) {

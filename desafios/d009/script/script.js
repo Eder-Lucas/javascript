@@ -44,6 +44,11 @@ function tabuada() {
             }
         }
     }
+    //animação de click do botão
+    gerarTab.style.background = '#b4b0b05d'
+    setTimeout( () => {
+        gerarTab.style.background = ''
+    }, 130)
 }
 
 /*
