@@ -22,6 +22,7 @@ console.log(`O primeiro valor do vetor é ${num[0]}`)
 //vê em que lugar está o valor 5 na array
 //quando o valor não é encontrado ele retorna -1
 let pos = num.indexOf(5)
+
 if (pos == -1) {
     console.log(`O valor não foi encontrado!`)
 } else {
