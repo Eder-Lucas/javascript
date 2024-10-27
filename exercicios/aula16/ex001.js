@@ -6,6 +6,5 @@ function parImpar(n) {
         return "Ímpar"// e se for ímpar também
     }
 }
-
 console.log(parImpar(13))
 
