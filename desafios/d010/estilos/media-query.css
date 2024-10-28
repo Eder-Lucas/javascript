@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 768px) {
+    section input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="submit"]:hover {
+        background-color: rgba(184, 180, 180, 0.641);
+    }
+}
+
+@media screen and (max-width: 532px) {
+    section {
+        border-radius: 0px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    header > h1 {
+        font-size: 10vw;
+    }
+
+    div#form > label {
+        font-size: 5vw;
+    }
+
+    input[type="number"] {
+        width: 25vw;
+    }
+
+    input[type="submit"] {
+        margin-left: 5px;
+        font-size: 4vw;
+    }
+
+    p {
+        font-size: 5vw;
+    }
+
+    footer img {
+        width: 15%;
+    }
+}
