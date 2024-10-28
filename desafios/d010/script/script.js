@@ -20,7 +20,7 @@ btnCalc.addEventListener('click', () => {
     }
 
     //animação ao clicar no botão
-    btnCalc.style.background = '#d5cfcfb4'
+    btnCalc.style.background = '#d5cfcf8c'
     setTimeout( () => {
         btnCalc.style.background = ''
     }, 130)
