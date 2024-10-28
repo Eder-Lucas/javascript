@@ -18,6 +18,12 @@ btnCalc.addEventListener('click', () => {
     } else {
         p.innerHTML = `${fatorial(n)}`
     }
+
+    //animação ao clicar no botão
+    btnCalc.style.background = '#d5cfcfb4'
+    setTimeout( () => {
+        btnCalc.style.background = ''
+    }, 130)
 })
 
 //mudança simultanea no input caso algo esteja errado
