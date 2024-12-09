@@ -1,14 +1,32 @@
+const numInput = document.querySelector('input#number')
+const numParaBin = document.querySelector('input#numbin')
 const btn = document.querySelector('input#btn')
-btn.addEventListener('click', conts)
+const res = document.querySelector('div#res')
 
-function conts() {
-    const numInput = document.querySelector('input#number')
-    const num_para_bin = document.querySelector('input#numbin')
-    const res = document.querySelector('div#res')
+btn.addEventListener('click', validação)
+function validação() {
     let num = Number(numInput.value)
-    let restoArray = []
 
-    if (num_para_bin.checked) {
+    if (numInput.value.trim() === '' || !Number.isInteger(num)) {
+        numInput.style.border = '2px solid red'
+        res.style.color = 'red'
+        res.innerHTML = '<p><strong>Insira um número válido</strong></p>'
+    } else if(num < 0) {
+        let num_positivo = Math.abs(num)
+        alert(`O programa não suporta números negativos. Considerando ${num} como ${num_positivo}.`)
+        numInput.value = num_positivo
+        numInput.style.border = ''
+        num = num_positivo
+        
+        res.innerHTML = `${bin(num)}`
+    } else {
+        res.style.color = ''
+        res.innerHTML = `${bin(num)}`
+    }
+}
+
+function bin(num) {
+    if (numParaBin.checked) {
 
         /*
         for (let i = num; num > 0; num = Math.floor(num / 2)) {
@@ -25,15 +43,32 @@ function conts() {
             binario = '0' + binario
         }
 
-        let grupos = []
+        let grupoBin = []
 
         for (let i = 0; i < binario.length; i += 4) {
-            grupos.push(binario.slice(i, i + 4))
+            grupoBin.push(binario.slice(i, i + 4))
         }
-        console.log(grupos)
-        res.innerHTML = grupos.join(' ')
+        console.log(grupoBin)
+        return `${grupoBin.join(' ')}`
     } else {
-        let decimal = parseInt(num, 2)
-        res.innerHTML = decimal     
+        let decimal = parseInt(String(num), 2)
+
+        if (Number.isNaN(decimal)) {
+            numInput.style.border = '2px solid red'
+            res.style.color = 'red'
+            return '<p><strong>Insira um número binário válido</strong></p>'
+        } else {
+            res.style.color = ''
+            return `${decimal}`
+        }
     }
 }
+
+numInput.addEventListener('input', () => {
+    if (numInput.value.trim() === '' || !Number.isInteger(Number(numInput.value)) || Number(numInput.value) < 0) {
+        numInput.style.border = '2px solid red'
+    } else {
+        numInput.style.border = ''
+
+    }
+})
