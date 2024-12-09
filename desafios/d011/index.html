@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binário</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
     <header>
         <h1>Binário</h1>
     </header>
 
     <section>
-        <div id="form">
+        <article id="form"></article>
+        <div id="num">
             <label for="number">Número:
                 <input type="number" name="number" id="number">
             </label>
-
             <input type="submit" id="btn" value="Enviar">
-            <br>
-            
-            <input type="radio" name="tipo" id="numbin" checked>
-            <label for="num/bin">Número para Binário</label>
-
-            <input type="radio" name="tipo" id="">
-            <label for="aa">Binário para número</label>
         </div>
+
+        <div id="tipo">
+            <input type="radio" name="tipo" id="numbin" checked>
+            <label for="numbin">Número para Binário</label>
+            <input type="radio" name="tipo" id="binnum">
+            <label for="binnum">Binário para número</label>
+        </div>
+        </article>
 
         <div id="res"></div>
     </section>
@@ -34,4 +37,5 @@
 
     <script src="script/script.js"></script>
 </body>
+
 </html>
