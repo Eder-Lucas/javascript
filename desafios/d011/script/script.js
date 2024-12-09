@@ -8,19 +8,19 @@ function validação() {
     let num = Number(numInput.value)
 
     if (numInput.value.trim() === '' || !Number.isInteger(num)) {
-        numInput.style.border = '2px solid red'
+        numInput.style.borderBottom = '2px solid red'
         res.style.color = 'red'
         res.innerHTML = '<p><strong>Insira um número válido</strong></p>'
     } else if(num < 0) {
         let num_positivo = Math.abs(num)
         alert(`O programa não suporta números negativos. Considerando ${num} como ${num_positivo}.`)
         numInput.value = num_positivo
-        numInput.style.border = ''
+        limparEstilo()
         num = num_positivo
         
         res.innerHTML = `${bin(num)}`
     } else {
-        res.style.color = ''
+        limparEstilo()
         res.innerHTML = `${bin(num)}`
     }
 }
@@ -53,22 +53,28 @@ function bin(num) {
     } else {
         let decimal = parseInt(String(num), 2)
 
-        if (Number.isNaN(decimal)) {
-            numInput.style.border = '2px solid red'
+        if (/^[01]+$/.test(num)) {
+            limparEstilo()
+            return `${decimal}`
+            
+        } else {
+            numInput.style.borderBottom = '2px solid red'
             res.style.color = 'red'
             return '<p><strong>Insira um número binário válido</strong></p>'
-        } else {
-            res.style.color = ''
-            return `${decimal}`
         }
     }
 }
 
+function limparEstilo() {
+    res.style.color = ''
+    numInput.style.borderBottom = ''
+}
+
 numInput.addEventListener('input', () => {
     if (numInput.value.trim() === '' || !Number.isInteger(Number(numInput.value)) || Number(numInput.value) < 0) {
-        numInput.style.border = '2px solid red'
+        numInput.style.borderBottom = '2px solid red'
     } else {
-        numInput.style.border = ''
+        limparEstilo()
 
     }
 })
