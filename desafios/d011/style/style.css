@@ -43,6 +43,29 @@ div#tipo {
     justify-content: space-evenly;
 }
 
+input[type="number"] {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input[type="submit"] {
+    margin-left: 15px;
+    padding: 6px;
+    background-color: white;
+    font-weight: bold;
+    border: 2px solid #1874ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    
+}
+
+input[type="submit"]:hover {
+    background-color: #1874ff;
+    color: white;
+}
+
 input[type="radio"] {
     display: none;
 }
@@ -67,32 +90,30 @@ input[type="radio"]:checked + label {
     color: white;
 }
 
-input[type="number"] {
-    outline: none;
-    border: none;
-    border-bottom: 1px solid black;
-}
-
-input[type="submit"] {
-    margin-left: 15px;
-    padding: 6px;
-    background-color: white;
-    font-weight: bold;
-    border: 2px solid #1874ff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    
-}
-
-input[type="submit"]:hover {
-    background-color: #1874ff;
-    color: white;
-}
-
 div#res {
     margin: auto;
     padding-top: 30px;
     padding-bottom: 30px;
     text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer img:hover {
+    opacity: 0.8;
+}
+
+footer img {
+    width: 50px;
+    cursor: pointer;
 }
