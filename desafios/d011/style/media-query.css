@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 768px) {
+    body {
+        -webkit-tap-highlight-color: transparent;
+        /*retira a marcação transparente em dispositivos movéis*/
+    }
+
+    /*retira setas do tipo number*/
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="submit"]:hover {
+        background-color: white;
+        color: black;
+    }
+
+    input[type="radio"] + label:hover {
+        border-radius: 8px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    section {
+        border-radius: 0px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    h1 {
+        font-size: 7.5vw;
+    }
+
+    input[type="radio"]+label {
+        font-size: 3.7vw;
+    }
+
+    label#number {
+        font-size: 4vw;
+    }
+
+    input[type="number"] {
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    input[type="submit"] {
+        font-size: 3.5vw;
+        
+    }
+}
+
+@media screen and (max-width: 230px) {
+    input[type="submit"] {
+        
+    }
+}
