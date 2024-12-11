@@ -21,14 +21,15 @@ function validação() {
     if (numParaBin.checked && num < 0) {
         limparEstilo()
         const num_positivo = Math.abs(num)//converte a positivo
+
+        //alerta na tela
+        alert(`O programa não suporta números negativos. Considerando ${num} como ${num_positivo}.`)
+
         numInput.value = num_positivo
         num = num_positivo//atribui o valor positivo no num
 
         //chama a função que converte pra binário
         res.innerHTML = `${bin(num)}`
-
-        //alerta na tela
-        alert(`O programa não suporta números negativos. Considerando ${num} como ${num_positivo}.`)
     }
 
     //se não, verifica se a outra opção está selecionada
