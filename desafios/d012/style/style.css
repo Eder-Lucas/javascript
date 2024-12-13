@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header h1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: yellow;
+}
+
+section {
+    padding: 10px;
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+
+select {
+    width: 150px;
+}
