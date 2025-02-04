@@ -1,5 +1,6 @@
 const inputNum = document.querySelector('input#fnum')
 const btnAdd = document.querySelector('input#btnA')
+const btnDel = document.querySelector('input#delete')
 const btnFinal = document.querySelector('input#btnF')
 const lista = document.querySelector('select#flista')
 const res = document.querySelector('div#res')
@@ -15,7 +16,7 @@ function adicionar() {
         alert('Insira um valor Válido')
     } else if (num < 1 || num > 100) {
         alert('Insira um valor entre 1 e 100')
-    }else if (valores.includes(num)) {
+    } else if (valores.includes(num)) {
         alert(`O valor ${num} já foi adicionado`)
     } else {
         res.innerHTML = ''
@@ -28,31 +29,48 @@ function adicionar() {
     }
 }
 
-/*
-ao todo temos tantos números cadastrados
-o menor valor informado foi tanto
-somando todos os valores, temos tanto
-a média dos valores digitados é tanto
-*/
+btnDel.addEventListener('click', deletar)
+
+function deletar() {
+    if (lista.options.length > 0) {
+        res.innerHTML = ''
+        valores.splice(-1, 1)
+        lista.remove(lista.options.length - 1)
+    }
+}
 
 btnFinal.addEventListener('click', finalizar)
 
 function finalizar() {
-    res.innerHTML = ''
-    let quantValores = valores.length
-
-    let menorValor = Math.min(...valores)
-
-    let soma = 0
-    for (const i of valores) {
-        soma += i
+    if (valores.length == 0) {
+        window.alert('Adicione valores antes de finalizar!')
+    } else {
+        let quantValores = valores.length
+        let menorValor = Math.min(...valores)
+        let maiorValor = Math.max(...valores)
+        let soma = valores.reduce((a, b) => a + b, 0)
+        let media = (soma / quantValores).toFixed(1)
+        /*
+        metodo 2
+        let quantValores = valores.length
+        let maior = valores[0]
+        let menor = valores[0]
+        for(let pos in valores) {
+            soma += valores[pos]
+            if (valores[pos] > maior) {
+                maior = valores[pos]
+            }
+            if (valores[pos] < menor) {
+                menor = valores[pos]
+            }
+        }
+        media = soma / quantValores
+        */
+        res.innerHTML = ''
+        res.innerHTML += `<p>Ao todo, temos <strong>${quantValores}</strong> números informados.</p>`
+        res.innerHTML += `<p>O menor valor informado foi <strong>${menorValor}</strong>.</p>`
+        res.innerHTML += `<p>O maior valor informado foi <strong>${maiorValor}</strong>.</p>`
+        res.innerHTML += `<p>Somando todos os valores, temos <strong>${soma}</strong>.</p>`
+        res.innerHTML += `<p>A média dos valores digitados é <strong>${media}</strong>.</p>`
     }
-
-    let media = (soma / quantValores).toFixed(2)
-
-    res.innerHTML += `${quantValores} <br>`
-    res.innerHTML += `${menorValor} <br>`
-    res.innerHTML += `${soma} <br>`
-    res.innerHTML += `${media}`
-
 }
