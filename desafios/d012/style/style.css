@@ -24,4 +24,21 @@ section {
 
 select {
     width: 150px;
+    display: flex;
 }
+
+input#btnF {
+    display: flex;
+    margin-top: 15px;
+}
+
+div#res {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+div#res p {
+    margin: 5px;
+}
+
