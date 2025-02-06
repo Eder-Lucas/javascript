@@ -3,6 +3,8 @@ const btnAdd = document.querySelector('input#btnA')
 const btnDel = document.querySelector('input#delete')
 const btnFinal = document.querySelector('input#btnF')
 const lista = document.querySelector('select#flista')
+const ul = document.querySelector('ul#ul')
+const form = document.querySelector('div#form')
 const res = document.querySelector('div#res')
 
 btnAdd.addEventListener('click', adicionar)
@@ -23,20 +25,26 @@ function adicionar() {
         valores.push(num)
         inputNum.value = ''
         inputNum.focus()
+
+        let li = document.createElement('li')
+        li.innerHTML = `Valor ${num} adicionado`
+        ul.appendChild(li)
+
         let item = document.createElement('option')
         item.text = `Valor ${num} adicionado`
         lista.appendChild(item)
+
     }
 }
+
 
 btnDel.addEventListener('click', deletar)
 
 function deletar() {
-    if (lista.options.length > 0) {
-        res.innerHTML = ''
-        valores.splice(-1, 1)
-        lista.remove(lista.options.length - 1)
-    }
+    valores.splice(-1, 1)
+    lista.remove(lista.options.length - 1)
+    ul.removeChild(ul.lastChild)
+    res.innerHTML = ''
 }
 
 btnFinal.addEventListener('click', finalizar)
@@ -67,10 +75,28 @@ function finalizar() {
         media = soma / quantValores
         */
         res.innerHTML = ''
-        res.innerHTML += `<p>Ao todo, temos <strong>${quantValores}</strong> números informados.</p>`
+        res.innerHTML += `<p>Ao todo, temos <strong>${quantValores}</strong> número${quantValores > 1 ? 's' : ''} informado${quantValores > 1 ? 's' : ''}.</p>`
         res.innerHTML += `<p>O menor valor informado foi <strong>${menorValor}</strong>.</p>`
         res.innerHTML += `<p>O maior valor informado foi <strong>${maiorValor}</strong>.</p>`
         res.innerHTML += `<p>Somando todos os valores, temos <strong>${soma}</strong>.</p>`
         res.innerHTML += `<p>A média dos valores digitados é <strong>${media}</strong>.</p>`
     }
 }
+
+function checkMobile() {
+    return window.matchMedia("(max-width: 768px)").matches
+}
+
+function version() {
+    if (checkMobile()) {
+        ul.style.display = "block"
+        lista.style.display = "none"
+    } else {
+        lista.style.display = "block"
+        ul.style.display = "none"
+    }
+}
+
+version()
+
+window.matchMedia("(max-width: 768px)").addEventListener('change', version)
