@@ -24,12 +24,26 @@ section {
 }
 
 select {
+    position: relative;
     width: 160px;
     display: flex;
     margin-top: 15px;
     padding: 5px;
     background-color: black;
     outline: none;
+    border: 2px solid white;
+    border-radius: 10px;
+    scrollbar-color: rgb(0, 180, 0) rgb(192, 192, 192);
+}
+
+option#msgOpt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 option {
@@ -67,8 +81,27 @@ input[type="submit"]:hover {
 }
 
 ul {
+    position: relative;
+    height: 100px;
+    width: 200px;
     padding-left: 5px;
     list-style: none;
+    overflow-y: auto;
+    scrollbar-color: rgb(0, 180, 0) rgb(192, 192, 192);
+}
+
+div#lista-container {
+    position: relative;
+}
+
+li#msgLi {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
 input#btnF {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/media-query.css">
 </head>
+
 <body>
     <header>
         <h1>Analisador de Número</h1>
@@ -22,8 +24,16 @@
                 <input id="delete" type="submit" value="Remover">
             </div>
 
-            <select name="flista" id="flista" size="6"></select>
-            <ul id="ul"></ul>
+            <div id="lista-container">
+                <select name="flista" id="flista" size="6">
+                    <option id="msgOpt">Adicione números!</option>
+                </select>
+
+                <ul id="ul">
+                    <li id="msgLi">Adicione números!</li>
+                </ul>
+            </div>
+
             <input id="btnF" type="submit" value="Finalizar">
 
         </div>
@@ -36,4 +46,5 @@
 
     <script src="script/script.js"></script>
 </body>
+
 </html>

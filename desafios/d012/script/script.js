@@ -26,13 +26,21 @@ function adicionar() {
         inputNum.value = ''
         inputNum.focus()
 
+        if (ul.children.length === 1 && ul.children[0].id === "msgLi") {
+            ul.innerHTML = ''
+        }
         let li = document.createElement('li')
         li.innerHTML = `Valor ${num} adicionado`
         ul.appendChild(li)
+        li.scrollIntoView({ behavior: "smooth", block: "end"})
 
+        if (lista.children.length === 1 && lista.children[0].id === "msgOpt") {
+            lista.innerHTML = ''
+        }
         let item = document.createElement('option')
         item.text = `Valor ${num} adicionado`
         lista.appendChild(item)
+        item.scrollIntoView({ behavior:"smooth", block:"end"})
 
     }
 }

@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
 @media screen and (max-width:768px) {
+    
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
     ul {
-        width: 200px;
         padding: 0px;
         background-color: black;
         border-radius: 10px;
@@ -36,10 +40,39 @@
         margin: auto;
         margin-top: 15px;
         text-align: left;
+        border: 2px solid greenyellow;
     }
 
     input#btnF {
         margin: auto;
         margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 324px) {
+    header > h1 {
+        font-size: 10vw;
+    }
+
+    label {
+        font-size: 5vw;
+    }
+
+    input[type="number"] {
+        width: 20vw;
+    }
+
+    input[type="submit"] {
+        font-size: 4vw;
+        padding: 7;
+    }
+
+    ul {
+        width: 60vw;
+        font-size: 5vw;
+    }
+
+    div#res {
+        font-size: 4.5vw;
     }
 }
