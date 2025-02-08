@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@media screen and (max-width:768px) {
+    ul {
+        width: 200px;
+        padding: 0px;
+        background-color: black;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    li {
+        margin-left: 6px;
+        color: lime;
+        padding: 6px;
+    }
+}
+
+@media screen and (max-width: 459px) {
+    div#form {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    div#botoes {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    input[type="submit"] {
+        padding: 8px;
+    }
+
+    ul {
+        margin: auto;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    input#btnF {
+        margin: auto;
+        margin-top: 15px;
+    }
+}
