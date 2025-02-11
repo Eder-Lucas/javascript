@@ -2,7 +2,6 @@ const inputNum = document.querySelector('input#fnum')
 const btnAdd = document.querySelector('input#btnA')
 const btnDel = document.querySelector('input#delete')
 const btnFinal = document.querySelector('input#btnF')
-const lista = document.querySelector('select#flista')
 const ul = document.querySelector('ul#ul')
 const form = document.querySelector('div#form')
 const res = document.querySelector('div#res')
@@ -32,16 +31,7 @@ function adicionar() {
         let li = document.createElement('li')
         li.innerHTML = `Valor ${num} adicionado`
         ul.appendChild(li)
-        li.scrollIntoView({ behavior: "smooth", block: "end"})
-
-        if (lista.children.length === 1 && lista.children[0].id === "msgOpt") {
-            lista.innerHTML = ''
-        }
-        let item = document.createElement('option')
-        item.text = `Valor ${num} adicionado`
-        lista.appendChild(item)
-        item.scrollIntoView({ behavior:"smooth", block:"end"})
-
+        li.scrollIntoView({ behavior: "smooth", block: "end" })
     }
 }
 
@@ -49,9 +39,30 @@ function adicionar() {
 btnDel.addEventListener('click', deletar)
 
 function deletar() {
-    valores.splice(-1, 1)
-    lista.remove(lista.options.length - 1)
-    ul.removeChild(ul.lastChild)
+
+    if (valores.length > 0) {
+        valores.splice(-1, 1)
+    }
+
+    if (ul.children.length > 0 && ul.querySelector('li:last-child').id !== 'msgLi') {
+        ul.removeChild(ul.lastChild)
+    }
+
+    if (ul.children.length === 0) {
+        if (!document.querySelector('li#msgLi')) {
+            let msgLi = document.createElement('li')
+            msgLi.id = 'msgLi'
+            msgLi.textContent = 'Adicione números!'
+            ul.appendChild(msgLi)
+        }
+    }
+
+    setTimeout(() => {
+        let lastLi = ul.querySelector('li:last-child')
+        ul.scrollTop -= 5
+        lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
+
+    }, 10)
     res.innerHTML = ''
 }
 
@@ -90,21 +101,3 @@ function finalizar() {
         res.innerHTML += `<p>A média dos valores digitados é <strong>${media}</strong>.</p>`
     }
 }
-
-function checkMobile() {
-    return window.matchMedia("(max-width: 768px)").matches
-}
-
-function version() {
-    if (checkMobile()) {
-        ul.style.display = "block"
-        lista.style.display = "none"
-    } else {
-        lista.style.display = "block"
-        ul.style.display = "none"
-    }
-}
-
-version()
-
-window.matchMedia("(max-width: 768px)").addEventListener('change', version)
