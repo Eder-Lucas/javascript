@@ -39,30 +39,44 @@ function adicionar() {
 btnDel.addEventListener('click', deletar)
 
 function deletar() {
+    btnDel.disabled = true
 
     if (valores.length > 0) {
         valores.splice(-1, 1)
     }
 
-    if (ul.children.length > 0 && ul.querySelector('li:last-child').id !== 'msgLi') {
-        ul.removeChild(ul.lastChild)
+    let lastLi = ul.querySelector('li:last-child')
+
+    if (lastLi && lastLi.id !== 'msgLi') {
+        lastLi.style.color = 'red'
+        lastLi.style.transition = 'color 0.2s'
+
+        setTimeout(() => {
+            if (ul.children.length > 0 && ul.querySelector('li:last-child').id !== 'msgLi') {
+                ul.removeChild(ul.lastChild)
+            }
+
+            let newLastLi = ul.querySelector('li:last-child')
+            if (newLastLi) {
+                ul.scrollTop -= 5
+                newLastLi.scrollIntoView({ behavior: "smooth", block: "end" })
+            }
+
+            if (ul.children.length === 0) {
+                if (!document.querySelector('li#msgLi')) {
+                    let msgLi = document.createElement('li')
+                    msgLi.id = 'msgLi'
+                    msgLi.textContent = 'Adicione números!'
+                    ul.appendChild(msgLi)
+                }
+            }
+
+            btnDel.disabled = false
+        }, 900)
+    } else {
+        btnDel.disabled = false
     }
-
-    if (ul.children.length === 0) {
-        if (!document.querySelector('li#msgLi')) {
-            let msgLi = document.createElement('li')
-            msgLi.id = 'msgLi'
-            msgLi.textContent = 'Adicione números!'
-            ul.appendChild(msgLi)
-        }
-    }
-
-    setTimeout(() => {
-        let lastLi = ul.querySelector('li:last-child')
-        ul.scrollTop -= 5
-        lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
-
-    }, 10)
+    lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
     res.innerHTML = ''
 }
 
