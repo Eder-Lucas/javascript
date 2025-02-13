@@ -40,6 +40,7 @@ btnDel.addEventListener('click', deletar)
 
 function deletar() {
     btnDel.disabled = true
+    btnAdd.disabled = true
 
     if (valores.length > 0) {
         valores.splice(-1, 1)
@@ -72,9 +73,12 @@ function deletar() {
             }
 
             btnDel.disabled = false
+            btnAdd.disabled = false
+            inputNum.focus()
         }, 900)
     } else {
         btnDel.disabled = false
+        btnAdd.disabled = false
     }
     lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
     res.innerHTML = ''
