@@ -94,6 +94,11 @@ li#msgLi {
     white-space: nowrap;
 }
 
+li#msgLi:hover {
+    background-color: black;
+    color: lime;
+}
+
 input#btnF {
     display: flex;
     margin-top: 15px;
