@@ -78,6 +78,7 @@ li {
 li:hover {
     background-color: lime;
     color: black;
+    font-weight: bold;
 }
 
 div#lista-container {
@@ -96,6 +97,7 @@ li#msgLi {
 
 li#msgLi:hover {
     background-color: black;
+    font-weight: normal;
     color: lime;
 }
 
@@ -116,5 +118,35 @@ div#res p {
 
 div#botoes {
     display: inline-block;
+}
+
+.animacao {
+    transform: scale(0.9);
+    transition: 0.2s ease;
+    color: #1b58ff;
+}
+
+.animationGit {
+    width: 40px;
+    transition: .1s ease-in-out;
+    border-radius: 20px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer p {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+footer img:hover {
+    opacity: 0.8;
+}
+
+footer img {
+    width: 50px;
+    cursor: pointer;
 }
 
