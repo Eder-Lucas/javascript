@@ -119,3 +119,29 @@ function finalizar() {
         res.innerHTML += `<p>A média dos valores digitados é <strong>${media}</strong>.</p>`
     }
 }
+
+const botões = document.querySelectorAll('.buttons')
+
+botões.forEach(function (botao) {
+    botao.addEventListener('click', function () {
+        this.classList.add("animacao")
+        this.style.background = '#1b58ff'
+        setTimeout(() => {
+            this.classList.remove("animacao")
+            this.style.background = ''
+        }, 150);
+    })
+})
+
+const gitHub = document.querySelector('img#linkGitHub')
+
+gitHub.addEventListener('click', function () {
+    this.classList.add('animationGit')
+
+    setTimeout(() => {
+        this.classList.remove('animationGit')
+        setTimeout(() => {
+            window.open('https://github.com/Eder-Lucas', '_blank')
+        }, 100)
+    }, 90)
+})
