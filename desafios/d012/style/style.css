@@ -132,6 +132,11 @@ div#botoes {
     border-radius: 20px;
 }
 
+.styleErro {
+    color: red;
+    text-align: center;
+}
+
 footer {
     text-align: center;
 }
