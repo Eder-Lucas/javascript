@@ -35,6 +35,11 @@ function adicionar() {
     }
 }
 
+inputNum.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        adicionar()
+    }
+})
 
 btnDel.addEventListener('click', deletar)
 
