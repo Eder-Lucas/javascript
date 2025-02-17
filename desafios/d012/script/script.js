@@ -44,6 +44,8 @@ inputNum.addEventListener('keydown', function(e) {
 btnDel.addEventListener('click', deletar)
 
 function deletar() {
+    inputNum.value = ''
+
     btnDel.disabled = true
     btnAdd.disabled = true
 
