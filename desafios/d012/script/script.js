@@ -14,11 +14,11 @@ function adicionar() {
     let num = Number(inputNum.value)
 
     if (inputNum.value.trim() === '' || !Number.isInteger(num)) {
-        alert('Insira um valor Válido')
+        Erro('Insira um número válido.')
     } else if (num < 1 || num > 100) {
-        alert('Insira um valor entre 1 e 100')
+        Erro('Insira um valor entre 1 e 100.')
     } else if (valores.includes(num)) {
-        alert(`O valor ${num} já foi adicionado`)
+        Erro(`O valor ${num} já foi adicionado.`)
     } else {
         res.innerHTML = ''
         valores.push(num)
@@ -92,8 +92,10 @@ function deletar() {
 btnFinal.addEventListener('click', finalizar)
 
 function finalizar() {
+    res.classList.remove("styleErro")
+    
     if (valores.length == 0) {
-        window.alert('Adicione valores antes de finalizar!')
+        Erro('Adicione valores antes de finalizar!')
     } else {
         let quantValores = valores.length
         let menorValor = Math.min(...valores)
@@ -123,6 +125,11 @@ function finalizar() {
         res.innerHTML += `<p>Somando todos os valores, temos <strong>${soma}</strong>.</p>`
         res.innerHTML += `<p>A média dos valores digitados é <strong>${media}</strong>.</p>`
     }
+}
+
+function Erro(msg) {
+    res.classList.add("styleErro")
+    return res.innerHTML = `<p><strong>${msg}</strong></p>`
 }
 
 const botões = document.querySelectorAll('.buttons')
