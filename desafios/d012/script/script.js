@@ -22,17 +22,24 @@ function adicionar() {
     } else if (valores.includes(num)) {
         Erro(`O valor ${num} já foi adicionado.`)
     } else {
-        res.innerHTML = ''
-        valores.push(num)
-        inputNum.value = ''
-        inputNum.focus()
+    //após ser aprovado pela validação
+    //começa a adicionar os valores
 
+        res.innerHTML = ''
+        valores.push(num) //coloca o valor na array
+        inputNum.value = ''
+        inputNum.focus() //coloca o foco novamente no input
+
+        //verifica se tem 1 filho na lista e ele é a mensagem
         if (ul.children.length === 1 && ul.children[0].id === "msgLi") {
-            ul.innerHTML = ''
+            ul.innerHTML = '' //apaga a mensagem para adicionar os valores
         }
+
         let li = document.createElement('li')
         li.innerHTML = `Valor ${num} adicionado`
         ul.appendChild(li)
+        
+        //efeito acompanha a lista
         li.scrollIntoView({ behavior: "smooth", block: "end" })
     }
 }
@@ -96,7 +103,7 @@ btnFinal.addEventListener('click', finalizar)
 
 function finalizar() {
     res.classList.remove("styleErro")
-    
+
     if (valores.length == 0) {
         Erro('Adicione valores antes de finalizar!')
     } else {
