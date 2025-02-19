@@ -1,3 +1,4 @@
+//selecionando elementos
 const inputNum = document.querySelector('input#fnum')
 const btnAdd = document.querySelector('input#btnA')
 const btnDel = document.querySelector('input#delete')
@@ -6,13 +7,14 @@ const ul = document.querySelector('ul#ul')
 const form = document.querySelector('div#form')
 const res = document.querySelector('div#res')
 
+//vai armazenar os valores do input
+let valores = []
+
 btnAdd.addEventListener('click', adicionar)
-
-var valores = []
-
 function adicionar() {
     let num = Number(inputNum.value)
 
+    //validação
     if (inputNum.value.trim() === '' || !Number.isInteger(num)) {
         Erro('Insira um número válido.')
     } else if (num < 1 || num > 100) {
@@ -35,7 +37,7 @@ function adicionar() {
     }
 }
 
-inputNum.addEventListener('keydown', function(e) {
+inputNum.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         adicionar()
     }
@@ -88,7 +90,6 @@ function deletar() {
         btnAdd.disabled = false
     }
     lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
-    res.innerHTML = ''
 }
 
 btnFinal.addEventListener('click', finalizar)
@@ -129,9 +130,34 @@ function finalizar() {
     }
 }
 
+inputNum.addEventListener('input', () => {
+    let valor = Number(inputNum.value)
+
+    if (inputNum.value.trim() === '' || !Number.isInteger(valor)) {
+        Erro()
+    } else if (valor < 1 || valor > 100) {
+        Erro()
+    } else if (valores.includes(valor)) {
+        Erro()
+    } else {
+        semErro()
+    }
+})
+
 function Erro(msg) {
-    res.classList.add("styleErro")
-    return res.innerHTML = `<p><strong>${msg}</strong></p>`
+    if (msg) {
+        res.classList.add("styleErro")
+        res.innerHTML = `<p><strong>${msg}</strong></p>`
+    } else {
+        inputNum.style.borderBottom = '2px solid red'
+        res.innerHTML = ''
+    }
+}
+
+function semErro() {
+    res.classList.remove("styleErro")
+    inputNum.style.borderBottom = ''
+    res.innerHTML = ''
 }
 
 const botões = document.querySelectorAll('.buttons')
