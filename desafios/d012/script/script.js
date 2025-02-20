@@ -74,6 +74,7 @@ function deletar() {
         setTimeout(() => {
             if (ul.children.length > 0 && ul.querySelector('li:last-child').id !== 'msgLi') {
                 ul.removeChild(ul.lastChild)
+                res.innerHTML = ''
             }
 
             let newLastLi = ul.querySelector('li:last-child')
@@ -114,7 +115,8 @@ function finalizar() {
         let menorValor = Math.min(...valores)
         let maiorValor = Math.max(...valores)
         let soma = valores.reduce((a, b) => a + b, 0)
-        let media = (soma / quantValores).toFixed(1)
+        let media = (soma / quantValores)
+        media = Number.isInteger(media) ? media : media.toFixed(1)
         /*
         metodo 2
         let quantValores = valores.length
