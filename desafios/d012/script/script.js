@@ -44,7 +44,10 @@ function adicionar() {
     }
 }
 
-inputNum.addEventListener('keydown', function (e) {
+//essa função torna capaz adicionar números pelo Enter do teclado
+//o function(e) está dizendo que você vai acessar informações específicas do evento que aconteceu
+//é um mecanismo que te permite interagir com o evento de uma forma mais dinâmica
+inputNum.addEventListener('keyup', function (e) {
     if (e.key === 'Enter') {
         adicionar()
     }
