@@ -53,26 +53,30 @@ inputNum.addEventListener('keyup', function (e) {
     }
 })
 
+//configuração do botão de remover
 btnDel.addEventListener('click', deletar)
-
 function deletar() {
     inputNum.value = ''
 
+    //evita enviar e apagar valores desordenadamente
     btnDel.disabled = true
     btnAdd.disabled = true
 
+    //se tiver valores na array o último é apagado
     if (valores.length > 0) {
         valores.splice(-1, 1)
     }
 
+    //selecionando o último elemento da lista
     let lastLi = ul.querySelector('li:last-child')
 
+    //se o último elemento existe e não é a mensagem principal
+    //carrega uma animação
     if (lastLi && lastLi.id !== 'msgLi') {
-        lastLi.style.color = 'red'
-        lastLi.style.transition = 'color 0.2s'
+        lastLi.classList.add("animationApagando")
 
         setTimeout(() => {
-            if (ul.children.length > 0 && ul.querySelector('li:last-child').id !== 'msgLi') {
+            if (ul.children.length > 0) {
                 ul.removeChild(ul.lastChild)
                 res.innerHTML = ''
             }
