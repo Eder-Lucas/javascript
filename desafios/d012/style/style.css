@@ -155,6 +155,11 @@ footer img {
     border-radius: 20px;
 }
 
+.animationApagando {
+    color: red;
+    transition: 0.2s ease-out;
+}
+
 .styleErro {
     color: red;
     text-align: center;
