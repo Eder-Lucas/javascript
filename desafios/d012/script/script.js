@@ -22,8 +22,8 @@ function adicionar() {
     } else if (valores.includes(num)) {
         Erro(`O valor ${num} já foi adicionado.`)
     } else {
-    //após ser aprovado pela validação
-    //começa a adicionar os valores
+        //após ser aprovado pela validação
+        //começa a adicionar os valores
 
         res.innerHTML = ''
         valores.push(num) //coloca o valor na array
@@ -38,7 +38,7 @@ function adicionar() {
         let li = document.createElement('li')
         li.innerHTML = `Valor ${num} adicionado`
         ul.appendChild(li)
-        
+
         //efeito acompanha a lista
         li.scrollIntoView({ behavior: "smooth", block: "end" })
     }
@@ -56,7 +56,8 @@ inputNum.addEventListener('keyup', function (e) {
 //configuração do botão de remover
 btnDel.addEventListener('click', deletar)
 function deletar() {
-    inputNum.value = ''
+    semErro()
+    inputNum.value = ''//apaga o valor do campo
 
     //evita enviar e apagar valores desordenadamente
     btnDel.disabled = true
@@ -67,24 +68,33 @@ function deletar() {
         valores.splice(-1, 1)
     }
 
-    //selecionando o último elemento da lista
+    //último elemento da lista
     let lastLi = ul.querySelector('li:last-child')
+
+    //rola a lista até o último li
+    lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
 
     //se o último elemento existe e não é a mensagem principal
     //carrega uma animação
     if (lastLi && lastLi.id !== 'msgLi') {
-        lastLi.classList.add("animationApagando")
+        lastLi.classList.add("animationApagando")//adiciona o estilo do CSS
 
+        //após 900ms
         setTimeout(() => {
+            //verifica se tem valores e apaga o último valor
             if (ul.children.length > 0) {
-                ul.removeChild(ul.lastChild)
+                ul.removeChild(lastLi)
                 res.innerHTML = ''
             }
 
+            //já que o anterior foi apagado 
+            //pega o novo último elemento li
             let newLastLi = ul.querySelector('li:last-child')
-            if (newLastLi) {
-                ul.scrollTop -= 5
-                newLastLi.scrollIntoView({ behavior: "smooth", block: "end" })
+
+            //efeito ao remover um item com rolagem ativada
+            if (newLastLi) {//verifica se existe um novo último elemento li
+                ul.scrollTop -= 5//move a rolagem 5px para cima
+                newLastLi.scrollIntoView({ behavior: "smooth", block: "end" })//move novamente para baixo
             }
 
             if (ul.children.length === 0) {
@@ -104,7 +114,6 @@ function deletar() {
         btnDel.disabled = false
         btnAdd.disabled = false
     }
-    lastLi.scrollIntoView({ behavior: "smooth", block: "end" })
 }
 
 btnFinal.addEventListener('click', finalizar)
