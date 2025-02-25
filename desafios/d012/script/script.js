@@ -97,6 +97,7 @@ function deletar() {
                 newLastLi.scrollIntoView({ behavior: "smooth", block: "end" })//move novamente para baixo
             }
 
+            //impede que a mensagem suma criando um novo elemento
             if (ul.children.length === 0) {
                 if (!document.querySelector('li#msgLi')) {
                     let msgLi = document.createElement('li')
@@ -106,11 +107,13 @@ function deletar() {
                 }
             }
 
+            //no final da remoção
+            //habilita o uso dos botões e volta o foco pro input
             btnDel.disabled = false
             btnAdd.disabled = false
             inputNum.focus()
         }, 900)
-    } else {
+    } else {//caso for inválido reabilita os botões
         btnDel.disabled = false
         btnAdd.disabled = false
     }
@@ -119,17 +122,25 @@ function deletar() {
 btnFinal.addEventListener('click', finalizar)
 
 function finalizar() {
-    res.classList.remove("styleErro")
+    res.classList.remove("styleErro")//formata o estilo
 
+    //validação
     if (valores.length == 0) {
         Erro('Adicione valores antes de finalizar!')
     } else {
-        let quantValores = valores.length
-        let menorValor = Math.min(...valores)
+        let quantValores = valores.length//quantidade de valores
+        let menorValor = Math.min(...valores)//(...)spread analisa cada valor individualmente
         let maiorValor = Math.max(...valores)
+
+        //itera de forma simplificada cada valor da array e soma
         let soma = valores.reduce((a, b) => a + b, 0)
-        let media = (soma / quantValores)
+
+        let media = (soma / quantValores)//média
+
+        //se o número for inteiro retorna média sem vírgula
+        //se o número não for inteiro retorna a média com vírgula
         media = Number.isInteger(media) ? media : media.toFixed(1)
+
         /*
         metodo 2
         let quantValores = valores.length
@@ -146,8 +157,12 @@ function finalizar() {
         }
         media = soma / quantValores
         */
+
+        //mostra o resultado
         res.innerHTML = ''
+        //adiciona o plural na frase por operador ternario
         res.innerHTML += `<p>Ao todo, temos <strong>${quantValores}</strong> número${quantValores > 1 ? 's' : ''} informado${quantValores > 1 ? 's' : ''}.</p>`
+
         res.innerHTML += `<p>O menor valor informado foi <strong>${menorValor}</strong>.</p>`
         res.innerHTML += `<p>O maior valor informado foi <strong>${maiorValor}</strong>.</p>`
         res.innerHTML += `<p>Somando todos os valores, temos <strong>${soma}</strong>.</p>`
@@ -155,20 +170,18 @@ function finalizar() {
     }
 }
 
+//verifica mudanças no input e trata os erros
 inputNum.addEventListener('input', () => {
     let valor = Number(inputNum.value)
 
-    if (inputNum.value.trim() === '' || !Number.isInteger(valor)) {
-        Erro()
-    } else if (valor < 1 || valor > 100) {
-        Erro()
-    } else if (valores.includes(valor)) {
+    if (inputNum.value.trim() === '' || !Number.isInteger(valor) || (valor < 1 || valor > 100) || valores.includes(valor)) {
         Erro()
     } else {
         semErro()
     }
 })
 
+//função de erro que retorna uma mensagem quando preciso
 function Erro(msg) {
     if (msg) {
         res.classList.add("styleErro")
@@ -179,6 +192,7 @@ function Erro(msg) {
     }
 }
 
+//função que limpa o estilo da função de erro
 function semErro() {
     res.classList.remove("styleErro")
     inputNum.style.borderBottom = ''
