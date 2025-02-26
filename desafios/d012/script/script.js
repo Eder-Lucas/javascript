@@ -199,22 +199,20 @@ function semErro() {
     res.innerHTML = ''
 }
 
-const botões = document.querySelectorAll('.buttons')
-
-botões.forEach(function (botao) {
+//animção em todos os botões
+document.querySelectorAll('.buttons').forEach(function (botao) {
     botao.addEventListener('click', function () {
-        this.classList.add("animacao")
-        this.style.background = '#1b58ff'
+        botao.classList.add("animacao")// 'botao' representa cada elemento
+        botao.style.background = '#1b58ff'
         setTimeout(() => {
-            this.classList.remove("animacao")
-            this.style.background = ''
+            botao.classList.remove("animacao")
+            botao.style.background = ''
         }, 150);
     })
 })
 
-const gitHub = document.querySelector('img#linkGitHub')
-
-gitHub.addEventListener('click', function () {
+//animação da imagem do gitHub
+document.querySelector('img#linkGitHub').addEventListener('click', function () {
     this.classList.add('animationGit')
 
     setTimeout(() => {
