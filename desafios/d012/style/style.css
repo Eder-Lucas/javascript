@@ -143,6 +143,7 @@ footer img {
     cursor: pointer;
 }
 
+/* estilizações usadas no JavaScript */
 .animacao {
     transform: scale(0.9);
     transition: 0.2s ease;
