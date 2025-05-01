@@ -2,7 +2,7 @@
   "name": "javascript",
   "version": "1.0.0",
   "description": "<h1 align=\"center\">Bem-vindo!</h1>",
-  "main": "index.js",
+  "main": "var.js",
   "scripts": {},
   "keywords": [],
   "author": "",
