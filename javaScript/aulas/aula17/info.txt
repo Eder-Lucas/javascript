@@ -1,0 +1,1 @@
+Essa aula foi focada na revisão de alguns conceitos básicos de javascript, para assim avançar em assuntos mais complexos.
