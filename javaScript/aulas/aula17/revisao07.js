@@ -42,8 +42,9 @@ let bank = 3000
 
 console.log(`O valor total no banco: ${bank}`)
 prompt.question("💵 Digite o valor que deseja transferir ", answer => {
-    const quant = answer.replace(',','.')
-    Number(quant)
+    let quant = answer
+    quant = quant.replace(',','.')
+    quant = Number(quant)
 
     if (Number.isNaN(quant) || quant <= 0) {
         console.log("❌ O que você digitou não é um número válido")
@@ -53,7 +54,7 @@ prompt.question("💵 Digite o valor que deseja transferir ", answer => {
         bank -= quant
         bank = bank.toFixed(2)
         bank = bank.replace('.',',')
-        
+
         console.log(`✔️  Você transferiu ${quant} reais`)
         console.log(`Agora o valor total no banco é: ${bank} reais`)
     }
