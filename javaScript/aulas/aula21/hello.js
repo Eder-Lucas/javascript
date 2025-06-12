@@ -1,0 +1,1 @@
+console.log("Eu sou um arquivo importado!")
