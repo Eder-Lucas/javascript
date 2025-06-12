@@ -3,6 +3,7 @@
 
 //const { soma, sub } = require("./functions/math")
 
+//type module do package.json
 import './hello.js'
 import { soma, sub } from "./functions/math.js"
 import { catEmoji } from "./constants/emojis.js"
