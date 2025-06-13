@@ -3,7 +3,7 @@ export function soma(a,b) {
 }
 
 export function sub(a,b) {
-    return a + b
+    return a - b
 }
 
 /*
