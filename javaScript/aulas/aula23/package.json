@@ -1,0 +1,14 @@
+{
+  "name": "aula23",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node --env-file .env src/index.js",
+    "watch": "node --watch --env-file .env src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
