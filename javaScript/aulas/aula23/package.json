@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node --env-file .env src/index.js",
-    "watch": "node --watch --env-file .env src/index.js"
+    "watch": "node --watch --env-file .env src/index.js",
+    "aula07": "cd ../aula07 && node ex001.js"
   },
   "keywords": [],
   "author": "",
