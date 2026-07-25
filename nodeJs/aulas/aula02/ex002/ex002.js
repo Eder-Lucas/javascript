@@ -2,7 +2,8 @@ import express from "express"
 const app = express()
 const PORT = 5000
 
-app.listen(PORT, () => {
+// Assim aceita outras conexões
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Servidor ex002 rodando na porta ${PORT}`)
 })
 
