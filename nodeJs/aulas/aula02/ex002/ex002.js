@@ -15,8 +15,14 @@ app.get('/sobre', (req, res) => {
     res.send("barbearia do joaquim")
 })
 
+// Responde varias coisas ao mesmo tempo
 app.get('/servicos', (req, res) => {
-    res.json(servicos)
+    res.json({
+        servicos: servicos,
+        URL: req.url,
+        IP: req.ip,
+        METODO: req.method
+    })
 })
 
 const servicos = [
