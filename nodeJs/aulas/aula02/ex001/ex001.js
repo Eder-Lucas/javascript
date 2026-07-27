@@ -13,7 +13,8 @@ const PORT = 3000
 
 // Qual porta ele deve escutar e o que deve executar caso tudo esteja correto
 app.listen(PORT, () => {
-    console.log(`O servidor está rodando na porta ${PORT}`)
+   console.log(`Servidor 02_EX001 rodando na porta ${PORT}`)
+    console.log("Acesse: http://192.168.1.16:3000/")
 })
 
 // req > tudo que o cliente enviou

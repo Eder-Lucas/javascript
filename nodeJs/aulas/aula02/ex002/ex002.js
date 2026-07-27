@@ -22,7 +22,8 @@ app.get('/servicos', (req, res) => {
 
 // Assim aceita outras conexões
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Servidor ex002 rodando na porta ${PORT}`)
+    console.log(`Servidor 02_EX002 rodando na porta ${PORT}`)
+    console.log("Acesse: http://192.168.1.16:5000/")
 })
 
 const servicos = [
