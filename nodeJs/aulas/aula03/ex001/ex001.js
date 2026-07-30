@@ -18,6 +18,13 @@ app.get("/usuarios/:id/:nome", (req, res) => {
     res.send("OK")
 })
 
+// Base de dados simples
+const usuarios = [
+    { id: 1, nome: "Pedro" },
+    { id: 2, nome: "Maria" },
+    { id: 3, nome: "Bruno" }
+]
+
 // Pesquisa por um usuário existente usando o id
 app.get("/usuariosBuscar/:id", (req, res) => {
     const id = Number(req.params.id) // Converte pois sempre vem como string
@@ -43,10 +50,3 @@ app.listen(PORT, "0.0.0.0", () => {
     console.log(`Servidor 03_EX001 rodando na porta ${PORT}`)
     console.log("Acesse: http://192.168.1.16:3000/")
 })
-
-// Base de dados simples
-const usuarios = [
-    { id: 1, nome: "Pedro" },
-    { id: 2, nome: "Maria" },
-    { id: 3, nome: "Bruno" }
-]
