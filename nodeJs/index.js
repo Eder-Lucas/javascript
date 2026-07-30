@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 const aulas = {
     1: ["ex001.js"],
     2: ["ex001.js", "ex002.js"],
-    3: ["ex001.js"]
+    3: ["ex001.js", "ex002.js"]
 }
 
 console.log("===============")
@@ -47,7 +47,7 @@ rl.question("> ", async (opcao) => {
             console.log(`${n} - ${arquivo}`);
             n++
         }
-     
+        
         rl.question("> ", async (ex) => {
             spawn("node", ["--watch", `./aulas/aula03/ex00${ex}/ex00${ex}.js`], {
                 stdio: "inherit"
