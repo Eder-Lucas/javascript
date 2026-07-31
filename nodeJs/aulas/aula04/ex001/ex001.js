@@ -2,11 +2,12 @@ import express from 'express'
 const app = express()
 const PORT = 2026
 
+// Base de usuários
 const users = [
     {id: 1, name: "João", idade: 18},
-    {id: 2, name: "João", idade: 24},
+    {id: 2, name: "João Pedro", idade: 24},
     {id: 3, name: "Maria", idade: 56},
-    {id: 4, name: "Ricardo", idade: 15}
+    {id: 4, name: "Maria Clara", idade: 15}
 ]
 
 app.get('/usuarios', (req, res) => {
@@ -16,11 +17,13 @@ app.get('/usuarios', (req, res) => {
     })
 })
 
+// Para filtrar usamos "/userFilter?name=João"
 app.get('/userFilter', (req, res) => {
     const { name } = req.query
 
+    // Grava apenas users que contém o nome coletado
     if (name) {
-        const filtrados = users.filter(user => user.name.toLowerCase().includes(name.toLowerCase()))
+        const filtrados = users.filter(u => u.name.toLowerCase().includes(name.toLowerCase()))
 
         return res.json(filtrados)
     }
