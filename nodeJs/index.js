@@ -1,80 +1,99 @@
-import readline from "node:readline"
+import readline from "node:readline/promises"
 import { spawn } from "node:child_process"
+import fs from "node:fs/promises"
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
 
-const aulas = {
-    1: ["ex001.js"],
-    2: ["ex001.js", "ex002.js"],
-    3: ["ex001.js", "ex002.js"],
-    4: ["ex001.js"]
+const aulas = await aula()
+
+// Contabiliza todas as aulas
+async function totalArchive() {
+   const totalArchive = (await fs.readdir("./aulas")).length
+   return totalArchive
 }
 
-console.log("===============")
-console.log(" NODE ARCHIVES")
-console.log("===============")
-console.log("[ 1 ] AULA_01")
-console.log("[ 2 ] AULA_02")
-console.log("[ 3 ] AULA_03")
-console.log("[ 4 ] AULA_04")
+// Retorna um objeto com todas as aulas
+async function aula() {
+    const aulas = await fs.readdir('./aulas')
+    let arquivos = {}
+    let n = 0
+    for (const aula of aulas) {
+        const ex = await fs.readdir(`./aulas/${aula}`)
+        n++
 
-rl.question("> ", async (opcao) => {
-    if (opcao === "2") {
-        console.log("")
-        console.log("--- AULA 02 ---")
-        console.log("")
-
-        let n = 1
-        for (const arquivo of aulas[2]) {
-            console.log(`[ ${n} ] ${arquivo}`);
-            n++
-        }
-      
-        rl.question("> ", async (ex) => {
-            await import(`./aulas/aula02/ex00${ex}/ex00${ex}.js`)
-
-            rl.close()
-        })       
+        arquivos[n] = ex
     }
-    if (opcao === "3") {
-        console.log("")
-        console.log("--- AULA 03 ---")
-        console.log("")
 
-        let n = 1
-        for (const arquivo of aulas[3]) {
-            console.log(`${n} - ${arquivo}`);
-            n++
+    return arquivos
+}
+
+// Lista todas as aulas
+async function list() {
+    const total = await totalArchive()
+    for (let i = 1; i <= total; i++) {
+        let numberLesson = String(i).padStart(2, "0")
+
+        console.log(`[ ${i} ] 💻 AULA_${numberLesson}`)
+    }
+    console.log("")
+    console.log("[ 0 ] ❌ Sair")
+}
+
+// Executa os prompts
+async function questions() {
+    while(true) {
+        const option = await rl.question("> ")
+
+        // Se opcao for um número ausente em aulas, retorna undefined entrando no if de validação
+        if(option == 0) {
+            rl.close()
+
+            console.log("Node Archives fechado")
+            console.log("")
+            break
         }
+        else if (!aulas[option]) {
+            console.log("Aula não encontrada")
+            console.log("")
+            
+            continue
+        }
+
+        // Adiciona zeros ao começo da string
+        const lesson = option.padStart(2, "0")
         
-        rl.question("> ", async (ex) => {
-            spawn("node", ["--watch", `./aulas/aula03/ex00${ex}/ex00${ex}.js`], {
-                stdio: "inherit"
-            })
-
-            rl.close()
-        })     
-    }
-    if (opcao === "4") {
         console.log("")
-        console.log("--- AULA 04 ---")
+        console.log(`--- AULA ${lesson} ---`)
         console.log("")
 
         let n = 1
-        for (const arquivo of aulas[4]) {
-            console.log(`${n} - ${arquivo}`);
+        for (const arquivo of aulas[option]) {
+            console.log(`[ ${n} ] 📝 ${arquivo}`);
             n++
-        }
-        
-        rl.question("> ", async (ex) => {
-            spawn("node", ["--watch", `./aulas/aula04/ex00${ex}/ex00${ex}.js`], {
-                stdio: "inherit"
-            })
+        } 
 
-            rl.close()
-        })     
+        const ex = await rl.question("> ")
+        const exercise = ex.padStart(3, "0")
+
+        spawn("node", ["--watch", `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`], {
+            stdio: "inherit"
+        })
+        
+        break
     }
-})
+}
+
+// Inicializa a aplicação
+async function start() {
+    console.log("===============")
+    console.log(" NODE ARCHIVES")
+    console.log("===============")
+
+    await list()
+    questions()
+}
+
+start()
