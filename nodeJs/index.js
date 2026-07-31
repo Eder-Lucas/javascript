@@ -9,7 +9,8 @@ const rl = readline.createInterface({
 const aulas = {
     1: ["ex001.js"],
     2: ["ex001.js", "ex002.js"],
-    3: ["ex001.js", "ex002.js"]
+    3: ["ex001.js", "ex002.js"],
+    4: ["ex001.js"]
 }
 
 console.log("===============")
@@ -18,6 +19,7 @@ console.log("===============")
 console.log("[ 1 ] AULA_01")
 console.log("[ 2 ] AULA_02")
 console.log("[ 3 ] AULA_03")
+console.log("[ 4 ] AULA_04")
 
 rl.question("> ", async (opcao) => {
     if (opcao === "2") {
@@ -54,6 +56,25 @@ rl.question("> ", async (opcao) => {
             })
 
             rl.close()
-        })       
+        })     
+    }
+    if (opcao === "4") {
+        console.log("")
+        console.log("--- AULA 04 ---")
+        console.log("")
+
+        let n = 1
+        for (const arquivo of aulas[4]) {
+            console.log(`${n} - ${arquivo}`);
+            n++
+        }
+        
+        rl.question("> ", async (ex) => {
+            spawn("node", ["--watch", `./aulas/aula04/ex00${ex}/ex00${ex}.js`], {
+                stdio: "inherit"
+            })
+
+            rl.close()
+        })     
     }
 })
