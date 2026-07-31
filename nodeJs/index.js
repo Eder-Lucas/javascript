@@ -47,14 +47,14 @@ async function questions() {
     while(true) {
         const option = await rl.question("> ")
 
-        // Se opcao for um número ausente em aulas, retorna undefined entrando no if de validação
+        // Opção de fechamento
         if(option == 0) {
-            rl.close()
-
-            console.log("Node Archives fechado")
+            console.log("Node Archives fechado!")
             console.log("")
-            break
+
+            process.exit(0)
         }
+        // Se opcao for um número ausente em aulas, retorna undefined entrando no if de validação
         else if (!aulas[option]) {
             console.log("Aula não encontrada")
             console.log("")
@@ -81,7 +81,7 @@ async function questions() {
         spawn("node", ["--watch", `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`], {
             stdio: "inherit"
         })
-        
+
         break
     }
 }
