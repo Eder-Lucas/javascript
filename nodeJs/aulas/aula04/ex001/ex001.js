@@ -7,8 +7,18 @@ const users = [
     {id: 1, name: "João", idade: 18},
     {id: 2, name: "João Pedro", idade: 24},
     {id: 3, name: "Maria", idade: 56},
-    {id: 4, name: "Maria Clara", idade: 15}
+    {id: 4, name: "Maria Clara", idade: 15},
+    {id: 5, name: "Pedro", idade: 45}
 ]
+
+const routers = [
+    "/usuarios",
+    "/userFilter"
+]
+
+app.get('/', (req, res) => {
+    res.json(routers)
+})
 
 app.get('/usuarios', (req, res) => {
     res.json({
