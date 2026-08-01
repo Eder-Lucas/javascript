@@ -49,10 +49,10 @@ async function list() {
 // Executa os prompts
 async function questions() {
     while(true) {
-        const option = await rl.question("> ")
+        const option = await (await rl.question("> ")).trim()
 
         // Opção de fechamento
-        if(option == 0) {
+        if(option === "0") {
             console.log("Node Archives fechado!")
             console.log("")
 
@@ -81,9 +81,9 @@ async function questions() {
         console.log("")
         console.log("[ 0 ] << Voltar")
     
-        const ex = await rl.question("> ")
+        const ex = await (await rl.question("> ")).trim()
 
-        if (ex == 0) {
+        if (ex === "0") {
             console.log("")
             await start()
             
