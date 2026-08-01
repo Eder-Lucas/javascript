@@ -7,7 +7,7 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-const aulas = await aula()
+const aulas = await classroom()
 
 // Contabiliza todas as aulas
 async function totalArchive() {
@@ -16,7 +16,7 @@ async function totalArchive() {
 }
 
 // Retorna um objeto com todas as aulas
-async function aula() {
+async function classroom() {
     const aulas = await fs.readdir('./aulas') // Pega todo o diretorio de /aulas
 
     let arquivos = {}
@@ -34,7 +34,7 @@ async function aula() {
 }
 
 // Lista todas as aulas
-async function list() {
+async function listClass() {
     const total = await totalArchive()
 
     for (let i = 1; i <= total; i++) {
@@ -47,7 +47,7 @@ async function list() {
 }
 
 // Executa os prompts
-async function questions() {
+async function questionsClass() {
     while(true) {
         const option = await (await rl.question("> ")).trim()
 
@@ -62,50 +62,65 @@ async function questions() {
         else if (!aulas[option]) {
             console.log("Aula não encontrada")
             console.log("")
+            await listClass()
             
             continue
         }
 
         // Adiciona zeros ao começo da string
         const lesson = option.padStart(2, "0")
-        
-        console.log("")
-        console.log(`--- AULA ${lesson} ---`)
-        console.log("")
 
-        let n = 0
-        for (const arquivo of aulas[option]) {
-            n++
-            console.log(`[ ${n} ] 📝 ${arquivo}`);         
-        } 
-        console.log("")
-        console.log("[ 0 ] << Voltar")
-    
+        let n = listLesson(lesson, option)
+        await questionsLesson(n, lesson, option)
+
+        break
+    }
+}
+
+async function questionsLesson(totalExercise, lesson, option) {
+    while(true) {
         const ex = await (await rl.question("> ")).trim()
 
         if (ex === "0") {
             console.log("")
             await start()
             
-            continue
+            break
         }
 
         const numExercise = Number(ex)
 
-        if (numExercise > n || numExercise < n || isNaN(numExercise)) {
+        if (numExercise > totalExercise || numExercise < totalExercise || isNaN(numExercise)) {
             console.log("Exercicío não encontrado")
-            console.log("")
+            listLesson(lesson, option)
             continue
         }
 
         const exercise = ex.padStart(3, "0")
 
-        spawn("node", ["--watch", `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`], {
+        const URL = `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`
+        spawn("node", ["--watch", URL], {
             stdio: "inherit"
         })
 
         break
     }
+}
+
+function listLesson(lesson, option) {   
+    console.log("")
+    console.log(`--- AULA ${lesson} ---`)
+    console.log("")
+
+    let n = 0
+    for (const arquivo of aulas[option]) {
+        n++
+        console.log(`[ ${n} ] 📝 ${arquivo}`);         
+    } 
+    console.log("")
+    console.log("[ 0 ] << Voltar")
+
+    return n
 }
 
 // Inicializa a aplicação
@@ -114,8 +129,8 @@ async function start() {
     console.log(" NODE ARCHIVES")
     console.log("===============")
 
-    await list()
-    questions()
+    await listClass()
+    questionsClass()
 }
 
 start()
