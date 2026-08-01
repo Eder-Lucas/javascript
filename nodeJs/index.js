@@ -17,11 +17,14 @@ async function totalArchive() {
 
 // Retorna um objeto com todas as aulas
 async function aula() {
-    const aulas = await fs.readdir('./aulas')
+    const aulas = await fs.readdir('./aulas') // Pega todo o diretorio de /aulas
+
     let arquivos = {}
     let n = 0
+
+    // Pega o diretorio de cada uma dessas aulas, no caso, os exercicios
     for (const aula of aulas) {
-        const ex = await fs.readdir(`./aulas/${aula}`)
+        const ex = await fs.readdir(`./aulas/${aula}`) 
         n++
 
         arquivos[n] = ex
@@ -33,6 +36,7 @@ async function aula() {
 // Lista todas as aulas
 async function list() {
     const total = await totalArchive()
+
     for (let i = 1; i <= total; i++) {
         let numberLesson = String(i).padStart(2, "0")
 
@@ -69,13 +73,31 @@ async function questions() {
         console.log(`--- AULA ${lesson} ---`)
         console.log("")
 
-        let n = 1
+        let n = 0
         for (const arquivo of aulas[option]) {
-            console.log(`[ ${n} ] 📝 ${arquivo}`);
             n++
+            console.log(`[ ${n} ] 📝 ${arquivo}`);         
         } 
-
+        console.log("")
+        console.log("[ 0 ] << Voltar")
+    
         const ex = await rl.question("> ")
+
+        if (ex == 0) {
+            console.log("")
+            await start()
+            
+            continue
+        }
+
+        const numExercise = Number(ex)
+
+        if (numExercise > n || numExercise < n || isNaN(numExercise)) {
+            console.log("Exercicío não encontrado")
+            console.log("")
+            continue
+        }
+
         const exercise = ex.padStart(3, "0")
 
         spawn("node", ["--watch", `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`], {
