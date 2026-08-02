@@ -90,7 +90,7 @@ async function questionsLesson(totalExercise, lesson, option) {
 
         const numExercise = Number(ex)
 
-        if (numExercise > totalExercise || numExercise < totalExercise || isNaN(numExercise)) {
+        if (numExercise > totalExercise || isNaN(numExercise)) {
             console.log("Exercicío não encontrado")
             listLesson(lesson, option)
             continue
@@ -125,10 +125,9 @@ function listLesson(lesson, option) {
 
 // Inicializa a aplicação
 async function start() {
-    console.log("===============")
-    console.log(" NODE ARCHIVES")
-    console.log("===============")
-
+    console.log("==============")
+    console.log("NODE ARCHIVES")
+    console.log("==============")
     await listClass()
     questionsClass()
 }
