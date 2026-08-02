@@ -1,6 +1,8 @@
 import readline from "node:readline/promises"
 import { spawn } from "node:child_process"
 import fs from "node:fs/promises"
+import * as p from "@clack/prompts"
+import chalk from "chalk"
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -98,11 +100,20 @@ async function questionsLesson(totalExercise, lesson, option) {
 
         const exercise = ex.padStart(3, "0")
 
+        const log = p.taskLog({
+            title: "Carregando..."
+        });
+
+        await new Promise(resolve => setTimeout(resolve, 170));
+
         const URL = `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`
-        spawn("node", ["--watch", URL], {
+        await spawn("node", ["--watch", URL], {
             stdio: "inherit"
         })
 
+        log.success(chalk.cyan("Aula carregada com sucesso!"))
+        console.log("")
+        p.intro("Aula")
         break
     }
 }
