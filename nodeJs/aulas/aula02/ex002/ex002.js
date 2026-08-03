@@ -1,6 +1,9 @@
 import express from "express"
+import 'dotenv/config'
+
 const app = express()
 const PORT = 5000
+const SERVER_IP = process.env.SERVER_IP
 
 app.get('/', (req, res) => {
     res.send("Página inicial do servidor")
@@ -23,7 +26,7 @@ app.get('/servicos', (req, res) => {
 // Assim aceita outras conexões
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Servidor 02_EX002 rodando na porta ${PORT}`)
-    console.log("Acesse: http://192.168.1.16:5000/")
+    console.log(`Acesse: http://${SERVER_IP}:${PORT}/`)
 })
 
 const servicos = [

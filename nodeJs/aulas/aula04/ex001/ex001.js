@@ -1,5 +1,6 @@
 import express from 'express'
 import chalk from 'chalk'
+import 'dotenv/config'
 
 // Estilo do chalk
 const title = chalk.rgb(255, 23, 189)
@@ -7,6 +8,7 @@ const link = chalk.rgb(255, 225, 0)
 
 const app = express()
 const PORT = 2026
+const SERVER_IP = process.env.SERVER_IP
 
 // Base de usuários
 const users = [
@@ -49,5 +51,5 @@ app.get('/userFilter', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 04_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
-    console.log("Acesse: " + link.underline((`http://192.168.1.16:${PORT}/`)))
+    console.log("Acesse: " + link.underline((`http://${SERVER_IP}:${PORT}/`)))
 })

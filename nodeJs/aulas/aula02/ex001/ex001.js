@@ -7,14 +7,16 @@
 // JSON -- anotação de objeto javascript
 
 import express from "express"
+import 'dotenv/config'
 
 const app = express()
 const PORT = 3000
+const SERVER_IP = process.env.SERVER_IP
 
 // Qual porta ele deve escutar e o que deve executar caso tudo esteja correto
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
    console.log(`Servidor 02_EX001 rodando na porta ${PORT}`)
-    console.log("Acesse: http://192.168.1.16:3000/")
+    console.log(`Acesse: http://${SERVER_IP}:${PORT}/`)
 })
 
 // req > tudo que o cliente enviou
