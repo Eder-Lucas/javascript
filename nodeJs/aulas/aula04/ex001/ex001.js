@@ -1,4 +1,10 @@
 import express from 'express'
+import chalk from 'chalk'
+
+// Estilo do chalk
+const title = chalk.rgb(255, 23, 189)
+const link = chalk.rgb(255, 225, 0)
+
 const app = express()
 const PORT = 2026
 
@@ -22,14 +28,14 @@ app.get('/', (req, res) => {
 
 app.get('/usuarios', (req, res) => {
     res.json({
-        filter: req.query,
+        filter: req.query, // Retorna como objeto
         users: users
     })
 })
 
 // Para filtrar usamos "/userFilter?name=João"
 app.get('/userFilter', (req, res) => {
-    const { name } = req.query
+    const { name } = req.query // Já retorna salvo na variável
 
     // Grava apenas users que contém o nome coletado
     if (name) {
@@ -42,6 +48,6 @@ app.get('/userFilter', (req, res) => {
 })
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor 04_EX001 rodando na porta ${PORT}`)
-    console.log(`Acesse: http://192.168.1.16:${PORT}/`)
+    console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 04_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
+    console.log("Acesse: " + link.underline((`http://192.168.1.16:${PORT}/`)))
 })
