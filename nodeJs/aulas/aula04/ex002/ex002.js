@@ -61,21 +61,26 @@ app.get('/preco', (req, res) => {
 
 app.get('/produtos', (req, res) => {
     const filtros = req.query
-    
-    let produtosFiltrados = produtos
 
-    // for percorre todos os filtros
-    // filter percorre cada index do array de objetos Produtos
-    for (const campo in filtros) {
-        produtosFiltrados = produtosFiltrados.filter(produtos => {
-            const p = String(produtos[campo])
-            const f = String(filtros[campo])
+    if (filtros) {
+        let produtosFiltrados = produtos
 
-            return p.toLowerCase().includes(f.toLowerCase())
-        })
-    }
-    
-    res.json(produtosFiltrados)
+        // for percorre todos os filtros
+        // filter percorre cada index do array de objetos Produtos
+        for (const campo in filtros) {
+            produtosFiltrados = produtosFiltrados.filter(produtos => {
+                const p = String(produtos[campo])
+                const f = String(filtros[campo])
+
+                return p.toLowerCase().includes(f.toLowerCase())
+            })
+        }
+        
+        res.json(produtosFiltrados)
+    }    
+
+    // Se não tiver filtros mostra todos os produtos
+    res.json(produtos)
 })
 
 app.listen(PORT, '0.0.0.0', () => {
@@ -83,4 +88,3 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
     console.log("Acesso por IP: " + link.underline((`http://${SERVER_IP}:${PORT}/`)))
 })
-
