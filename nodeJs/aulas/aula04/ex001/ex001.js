@@ -37,11 +37,14 @@ app.get('/usuarios', (req, res) => {
 
 // Para filtrar usamos "/userFilter?name=João"
 app.get('/userFilter', (req, res) => {
-    const { name } = req.query // Já retorna salvo na variável
+    const { name: nameFilter } = req.query // Já retorna salvo na variável
 
-    // Grava apenas users que contém o nome coletado
-    if (name) {
-        const filtrados = users.filter(u => u.name.toLowerCase().includes(name.toLowerCase()))
+    // Se informar filtro
+    if (nameFilter) {
+        // Filter vai percorrer todo o array Users, salvando cada item em 'u'
+        const filtrados = users.filter(u => {
+            u.name.toLowerCase().includes(nameFilter.toLowerCase())
+        })      
 
         return res.json(filtrados)
     }
