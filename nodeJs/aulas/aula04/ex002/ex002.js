@@ -15,26 +15,31 @@ const produtos = [
     {
         id: 1,
         nome: "Teclado",
+        categoria: "Periferico",
         preco: 200
     },
     {
         id: 2,
         nome: "Mouse Gamer",
+        categoria: "Periferico",
         preco: 150
     },
     {
         id: 3,
         nome: "Mouse Gamer",
+        categoria: "Periferico",
         preco: 98
     },
     {
         id: 4,
         nome: "Monitor 24",
+        categoria: "Periferico",
         preco: 980
     },
     {
         id: 5,
         nome: "Notebook",
+        categoria: "Computador",
         preco: 4500
     }
 ]
