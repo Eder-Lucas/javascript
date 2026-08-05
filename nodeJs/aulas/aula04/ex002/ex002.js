@@ -24,7 +24,7 @@ const produtos = [
     },
     {
         id: 3,
-        nome: "Mouse x100V",
+        nome: "Mouse Gamer",
         preco: 98
     },
     {
@@ -68,7 +68,10 @@ app.get('/produtos', (req, res) => {
     // filter percorre cada index do array de objetos Produtos
     for (const campo in filtros) {
         produtosFiltrados = produtosFiltrados.filter(produtos => {
-            produtos[campos] == filtros[campos]
+            const p = String(produtos[campo])
+            const f = String(filtros[campo])
+
+            return p.toLowerCase().includes(f.toLowerCase())
         })
     }
     
