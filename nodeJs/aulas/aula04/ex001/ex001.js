@@ -54,5 +54,6 @@ app.get('/userFilter', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 04_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
-    console.log("Acesse: " + link.underline((`http://${SERVER_IP}:${PORT}/`)))
+    console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
+    console.log("Acesso por IP: " + link.underline((`http://${SERVER_IP}:${PORT}/`)))
 })
