@@ -44,20 +44,26 @@ const produtos = [
     }
 ]
 
+// Rota root
 app.get('/', (req, res) => {
     res.send("server online na porta " + PORT)
 })
 
 app.get('/preco', (req, res) => {
     let { min, max } = req.query
+
+    // Converte para números para realizar as comparações
     min = Number(min)
     max = Number(max)
 
+    // Se o filtro for informado
+    // Salva os produtos na faixa de preco
+    // Retorna apenas os dentro da faixa
     if (min || max) {
         const filtrados = produtos.filter(p => {
             const faixa = p.preco >= min || p.preco <= max
             
-            if (faixa) return p.nome          
+            if (faixa) return p.nome // Retorna os que estão na faixa       
         })
 
         res.json(filtrados)
@@ -72,6 +78,8 @@ app.get('/produtos', (req, res) => {
 
         // for percorre todos os filtros
         // filter percorre cada index do array de objetos Produtos
+        // Permite filtrar com mais de dois filtros:
+        // >> /produtos?nome=Mouse&categoria=periferico&preco=98
         for (const campo in filtros) {
             produtosFiltrados = produtosFiltrados.filter(produtos => {
                 const p = String(produtos[campo])
