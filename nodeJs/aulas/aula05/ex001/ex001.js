@@ -10,6 +10,11 @@ const SERVER_IP = process.env.SERVER_IP
 const title = chalk.rgb(255, 23, 189)
 const link = chalk.rgb(255, 225, 0)
 
+// Middleware: o express interpreta o JSON recebido
+// Disponibilizando como um objeto javascript no req.body
+// Sem essa linha o req.body retorna undefined
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.send("aula 05")
 })
