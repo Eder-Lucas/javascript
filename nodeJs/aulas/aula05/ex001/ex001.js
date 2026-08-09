@@ -26,6 +26,23 @@ app.post('/user', (req, res) => {
     })
 })
 
+// Rota que cria um usuário na memória
+const users = []
+
+app.post('/create', (req, res) => {
+    const { nome, idade } = req.body
+
+    let newUser = {
+        id: users.length + 1,
+        nome: nome,
+        idade: idade
+    }
+    
+    users.push(newUser)
+
+    res.status(201).json(users)
+})
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 05_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
     console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
