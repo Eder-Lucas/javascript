@@ -43,6 +43,20 @@ app.post('/create', (req, res) => {
     res.status(201).json(users)
 })
 
+// Rota que deleta um usuário por id
+app.delete('/delete/:id', (req, res) => {
+    const id = req.params.id
+
+    const deleteUser = users.findIndex(u => u.id == id)
+
+    users.splice(deleteUser, 1)
+
+    res.json({
+        user: deleteUser,
+        todos: users
+    })
+})
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 05_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
     console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
