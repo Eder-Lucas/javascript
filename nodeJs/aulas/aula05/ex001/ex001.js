@@ -26,9 +26,20 @@ app.post('/user', (req, res) => {
     })
 })
 
-// Rota que cria um usuário na memória
-const users = []
+const users = [
+    {
+        id: 1,
+        nome: "Pedro",
+        idade: 19
+    },
+    {
+        id: 2,
+        nome: "Lucas",
+        idade: 35
+    }
+]
 
+// Rota que cria um usuário na memória
 app.post('/create', (req, res) => {
     const { nome, idade } = req.body
 
@@ -55,6 +66,24 @@ app.delete('/delete/:id', (req, res) => {
         user: deleteUser,
         todos: users
     })
+})
+
+// Cria a rota de atualização
+app.put('/update/:id', (req, res) => {
+    const id = req.params.id
+
+    const user = users.find(u => u.id == id)
+
+    if (!user) {
+        return res.status(404).json({
+            erro: "Usuário não encontrado"
+        })
+    }
+
+    user.nome = req.body.nome
+    user.idade = req.body.idade
+
+    res.json(user)
 })
 
 app.listen(PORT, '0.0.0.0', () => {
