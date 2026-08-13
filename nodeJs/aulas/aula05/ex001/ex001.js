@@ -110,6 +110,18 @@ app.patch('/up/:id', (req, res) => {
     Object.assign(user, req.body)
 
     res.json(users)
+
+    /* 
+    SEM USAR OBJECT.ASSIGN
+
+    if (req.body.nome !== undefined) {
+        user.nome = req.body.nome
+    }
+
+    if (req.body.nome !== undefined) {
+        user.idade = req.body.idade
+    }
+    */
 })
 
 app.listen(PORT, '0.0.0.0', () => {
