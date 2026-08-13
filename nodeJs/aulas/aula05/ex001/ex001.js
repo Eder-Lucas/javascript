@@ -83,7 +83,33 @@ app.put('/update/:id', (req, res) => {
     user.nome = req.body.nome
     user.idade = req.body.idade
 
-    res.json(user)
+    res.json(users)
+})
+
+// Atualiza somente o que for informado, o restante permanece
+app.patch('/up/:id', (req, res) => {
+    const id = req.params.id
+
+    const user = users.find(u => u.id == id)
+
+    if (!user) {
+        return res.status(404).json({
+            erro: "Usuário não encontrado"
+        })
+    }
+
+    // Não permite alterar o id
+    if (req.body.id !== undefined) {
+        return res.status(400).json({
+            erro: "Não é permitido alterar o id"
+        })
+    }
+
+    // Copia os dados do corpo da requisição para o usuário selecionado
+    // Ele copia TUDO que for enviado, por isso impedimos alguns campos antes
+    Object.assign(user, req.body)
+
+    res.json(users)
 })
 
 app.listen(PORT, '0.0.0.0', () => {
