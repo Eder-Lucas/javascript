@@ -1,9 +1,9 @@
-const p = document.querySelector("p#o")
-const btn = document.querySelector("button#a")
-const nome = document.querySelector("input#nome")
-const listUser = document.querySelector("p#lista")
+const retorno = document.querySelector("p#retornoServidor")
+const btnAdicionar = document.querySelector("button#btnAdicionar")
+const campoNome = document.querySelector("input#nome")
+const listaUsuarios = document.querySelector("p#listaUsuarios")
 
-btn.addEventListener('click', lista)
+btnAdicionar.addEventListener('click', lista)
 async function lista() {
     const resposta = await fetch("http://192.168.1.16:5000/user")
     const salvaNome = await fetch("http://192.168.1.16:5000/salvar", {
@@ -12,15 +12,16 @@ async function lista() {
             "content-Type": "application/json"
         },
         body: JSON.stringify({
-            nome: nome.value
+            nome: campoNome.value
         })
     })
 
-    const users = await salvaNome.json()
     const itens = await resposta.json()
-    const ultimo = users[users.length - 1]
+    const usuarios = await salvaNome.json()   
+    
+    const ultimoUsuario = usuarios[usuarios.length - 1]
 
-    p.innerHTML = "A API retornou: " + itens.mensagem + "<br>"
-    p.innerHTML += "Novo usuário: " + JSON.stringify(ultimo)
-    listUser.innerText = JSON.stringify(users)  
+    retorno.innerHTML = "A API retornou: " + itens.mensagem + "<br>"
+    retorno.innerHTML += "Novo usuário: " + JSON.stringify(ultimoUsuario)
+    listaUsuarios.innerText = JSON.stringify(usuarios)  
 }
