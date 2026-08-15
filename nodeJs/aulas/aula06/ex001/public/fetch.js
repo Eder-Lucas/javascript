@@ -4,8 +4,15 @@ const campoNome = document.querySelector("input#nome")
 const listaUsuarios = document.querySelector("p#listaUsuarios")
 
 btnAdicionar.addEventListener('click', lista)
+
 async function lista() {
+    // Recebe a resposta em HTTP
     const resposta = await fetch("http://192.168.1.16:5000/user")
+
+    // Converte para json, pegando apenas o corpo da resposta
+    const itens = await resposta.json()
+
+    // Requisição POST
     const salvaNome = await fetch("http://192.168.1.16:5000/salvar", {
         method: "POST",
         headers: {
@@ -15,12 +22,11 @@ async function lista() {
             nome: campoNome.value
         })
     })
-
-    const itens = await resposta.json()
     const usuarios = await salvaNome.json()   
-    
+
     const ultimoUsuario = usuarios[usuarios.length - 1]
 
+    // Mostra os dados na tela
     retorno.innerHTML = "A API retornou: " + itens.mensagem + "<br>"
     retorno.innerHTML += "Novo usuário: " + JSON.stringify(ultimoUsuario)
     listaUsuarios.innerText = JSON.stringify(usuarios)  

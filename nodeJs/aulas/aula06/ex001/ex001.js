@@ -8,6 +8,10 @@ const PORT = 5000
 const SERVER_IP = process.env.SERVER_IP
 
 app.use(express.json())
+
+// express.static > executa todos os arquivos do front presentes em "public"
+// como o projeto é executado num caminho diferente do atual
+// usa o path para retornar o caminho atual do diretório até a pasta "public"
 app.use(express.static(path.join(import.meta.dirname,"public")))
 
 // Estilo do chalk
