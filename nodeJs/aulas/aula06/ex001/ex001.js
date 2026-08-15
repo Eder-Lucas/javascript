@@ -20,6 +20,21 @@ app.get('/user', (req, res) => {
     })
 })
 
+const usuarios = []
+
+app.post('/salvar', (req, res) => {
+    const name = req.body.nome
+
+    const newUser = {
+        id: usuarios.length + 1,
+        nome: name
+    }
+
+    usuarios.push(newUser)
+
+    res.status(200).json(usuarios)
+})
+
 app.listen(PORT, () => {
     console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 06_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
     console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
