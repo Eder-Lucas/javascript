@@ -19,14 +19,23 @@ export function startServer() {
 
     app.get('/', (req, res) => {
         res.json({
-            mensagem: "Servidor pronto!"
+            mensagem: "Servidor respondendo!"
         })
     })
 
-    app.get('/usuarios', (req, res) => {
-        res.json({
-            mensagem: "Acessando usuários"
-        })
+    const usuarios = []
+    app.post('/usuarios', (req, res) => {
+        const { campoNome, campoIdade } = req.body
+
+        const novoUsuario = {
+            id: usuarios.length + 1,
+            nome: campoNome,
+            idade: campoIdade
+        }
+
+        usuarios.push(novoUsuario)
+
+        res.status(200)
     })
 
     app.listen(PORT, () => {
