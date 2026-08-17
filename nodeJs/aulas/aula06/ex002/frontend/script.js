@@ -1,4 +1,5 @@
 const listaResposta = document.querySelector('p#resposta')
+const mostrarUsuarios = document.querySelector('p#usuarios')
 const btnEnviar = document.querySelector('input#enviar')
 const campoNome = document.querySelector('input#nome')
 const campoIdade = document.querySelector('input#idade')
@@ -31,4 +32,13 @@ async function salvarUsuario() {
     listaUsuarios()
 
     listaResposta.innerHTML = usuario.mensagem
+}
+
+async function listaUsuarios() {
+    const resposta = await fetch("http://192.168.1.16:4000/usuarios")
+    const usuarios = await resposta.json()
+
+    usuarios.forEach(u => {
+        listaResposta.innerHTML += `<br> Nome: ${u.nome} | Idade: ${u.idade}`
+    });
 }
