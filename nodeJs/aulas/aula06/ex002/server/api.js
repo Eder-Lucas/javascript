@@ -25,12 +25,12 @@ export function startServer() {
 
     const usuarios = []
     app.post('/usuarios', (req, res) => {
-        const { campoNome, campoIdade } = req.body
+        const { nome, idade } = req.body
 
         const novoUsuario = {
             id: usuarios.length + 1,
-            nome: campoNome,
-            idade: campoIdade
+            nome: nome,
+            idade: idade
         }
 
         usuarios.push(novoUsuario)
