@@ -46,4 +46,4 @@ async function listaUsuarios() {
 
 listaUsuarios()
 
-setInterval(executar, 5000)
+setInterval(listaUsuarios, 5000)
