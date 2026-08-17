@@ -19,7 +19,7 @@ export function startServer() {
 
     app.get('/', (req, res) => {
         res.json({
-            mensagem: "Servidor respondendo!"
+            mensagem: "Servidor ativo!"
         })
     })
 
@@ -35,7 +35,9 @@ export function startServer() {
 
         usuarios.push(novoUsuario)
 
-        res.status(200)
+        res.status(200).json({
+            mensagem: "Usuário adicionado com sucesso!"
+        })
     })
 
     app.listen(PORT, () => {
