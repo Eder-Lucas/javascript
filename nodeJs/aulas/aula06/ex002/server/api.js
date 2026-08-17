@@ -40,6 +40,10 @@ export function startServer() {
         })
     })
 
+    app.get('/usuarios', (req, res) => {
+        res.json(usuarios)
+    })
+
     app.listen(PORT, () => {
         console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 06_EX002 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
         console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
