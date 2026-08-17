@@ -8,10 +8,8 @@ async function carregar() {
     const resposta = await fetch("http://192.168.1.16:4000/")
     const dados = await resposta.json()
 
-    listaResposta.innerText = dados.mensagem
+    listaResposta.innerHTML = dados.mensagem
 }
-
-carregar()
 
 btnEnviar.addEventListener('click', salvarUsuario)
 
@@ -29,21 +27,22 @@ async function salvarUsuario() {
 
     const usuario = await resposta.json()
 
-    listaUsuarios()
-
     listaResposta.innerHTML = usuario.mensagem
+    
+    listaUsuarios()
 }
 
 async function listaUsuarios() {
     const resposta = await fetch("http://192.168.1.16:4000/usuarios")
     const usuarios = await resposta.json()
 
-    listaResposta.innerHTML = ""
+    mostrarUsuarios.innerHTML = ""
     usuarios.forEach(u => {
-        listaResposta.innerHTML += `<br> Nome: ${u.nome} | Idade: ${u.idade}`
+        mostrarUsuarios.innerHTML += `<br> Nome: ${u.nome} | Idade: ${u.idade}`
     });
 }
 
 listaUsuarios()
+carregar()
 
 setInterval(listaUsuarios, 5000)
