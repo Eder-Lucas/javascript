@@ -38,7 +38,12 @@ async function listaUsuarios() {
     const resposta = await fetch("http://192.168.1.16:4000/usuarios")
     const usuarios = await resposta.json()
 
+    listaResposta.innerHTML = ""
     usuarios.forEach(u => {
         listaResposta.innerHTML += `<br> Nome: ${u.nome} | Idade: ${u.idade}`
     });
 }
+
+listaUsuarios()
+
+setInterval(executar, 5000)
