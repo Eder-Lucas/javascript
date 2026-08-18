@@ -8,10 +8,19 @@ export function startServer() {
     const PORT = 4000
     const SERVER_IP = process.env.SERVER_IP
 
+    // Origens permitidas
+    const LIVE_SERVER = 'http://127.0.0.1:56974'
+    const GITHUB_PAGES = 'https://eder-lucas.github.io'
+    const origens = [LIVE_SERVER, GITHUB_PAGES]
+
     // Nesse exercício, o front e back estão em origens diferentes
     // Isso causa erro de CORS
     app.use(express.json())
-    app.use(cors()) // Permite acessar requisições de qualquer origem
+
+    // As requisições so podem vim dessa origem
+    app.use(cors({
+        origin: origens
+    }))
 
     // Estilo do chalk
     const title = chalk.rgb(255, 23, 189)
