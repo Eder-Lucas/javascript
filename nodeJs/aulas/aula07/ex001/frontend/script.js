@@ -4,8 +4,13 @@ const btnCod = document.querySelector('button#cod')
 btnCod.addEventListener('click', clique)
 
 async function clique() {
-    const resposta = await fetch('http://192.168.1.17:5050/')
-    const processo = await resposta.json()
+    try {
+        const resposta = await fetch('http://192.168.1.17:5050/')
+        const processo = await resposta.json()
 
-    mostraCod.innerHTML = processo.mensagem
+        mostraCod.textContent = processo.mensagem
+    } catch (error) { // Se não consegui realizar o fetch o servidor está inativo
+        mostraCod.textContent = "Servidor offline"
+    }
+    
 }
