@@ -8,9 +8,14 @@ export function start() {
     const PORT = 5050
     const SERVER_IP = process.env.SERVER_IP
 
+    // Origens permitidas
+    const LIVE_SERVER = ''
+    const GITHUB_PAGES = 'https://eder-lucas.github.io'
+    const origens = [LIVE_SERVER, GITHUB_PAGES]
+
     app.use(express.json())
     app.use(cors({
-        origin: 'http://127.0.0.1:56113'
+        origin: origens
     }))
 
     // Estilo do chalk
