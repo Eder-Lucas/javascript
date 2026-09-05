@@ -28,6 +28,23 @@ export function start() {
         })
     })
 
+    // Rota post para adicionar usuários
+    const usuarios = []
+    app.post('/usuarios', (req, res) => {
+        const { campoNome } = req.body
+
+        const novoUsuario = {
+            id: usuarios.length + 1,
+            nome: campoNome
+        }
+
+        usuarios.push(novoUsuario)
+
+        res.status(200).json({
+            mensagem: "Um usuário adicionado!"
+        })
+    })
+
     app.listen(PORT, '0.0.0.0', () => {
         console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 07_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
         console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
