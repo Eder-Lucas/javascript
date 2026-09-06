@@ -33,6 +33,14 @@ export function start() {
     app.post('/usuarios', (req, res) => {
         const { campoNome } = req.body
 
+        if (!campoNome) {
+            res.status(400).json({
+                mensagem: "[ERRO 400] Nome é obrigatório"
+            })
+
+            return
+        }
+
         const novoUsuario = {
             id: usuarios.length + 1,
             nome: campoNome
