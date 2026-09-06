@@ -3,6 +3,8 @@ const btnCod = document.querySelector('button#cod')
 const nome = document.querySelector('input#nome')
 const btnEnviar = document.querySelector('input#enviar')
 
+const API_URL = 'http://192.168.1.15:5050/'
+
 btnCod.addEventListener('click', servidorAtivo)
 
 async function servidorAtivo() {
@@ -12,7 +14,7 @@ async function servidorAtivo() {
         setTimeout(() => controlador.abort(), 2000)
 
         const resposta = await fetch(
-            'http://192.168.1.15:5050/',
+            API_URL,
             {
                 signal: controlador.abort()
             }
@@ -33,7 +35,7 @@ async function servidorAtivo() {
 btnEnviar.addEventListener('click', SalvarUsuario)
 
 async function SalvarUsuario() {
-    const resposta = await fetch('http://192.168.1.15:5050/usuarios', {
+    const resposta = await fetch(API_URL, {
         method: "POST",
         headers: {
             "content-Type": "application/json"
