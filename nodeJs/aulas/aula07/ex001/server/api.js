@@ -31,7 +31,7 @@ export function start() {
     // Rota post para adicionar usuários
     const usuarios = []
     app.post('/usuarios', (req, res) => {
-        const { campoNome } = req.body
+        const campoNome = req.body.nome
 
         if (!campoNome) {
             res.status(400).json({
