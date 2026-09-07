@@ -2,6 +2,8 @@ const mostraCod = document.querySelector('p#resposta')
 const btnCod = document.querySelector('button#cod')
 const nome = document.querySelector('input#nome')
 const btnEnviar = document.querySelector('input#enviar')
+const btnEnviarId = document.querySelector('input#enviarId')
+const id = document.querySelector('input#id')
 
 const API_URL = 'http://192.168.1.15:5050/'
 
@@ -16,7 +18,7 @@ async function servidorAtivo() {
         const resposta = await fetch(
             API_URL,
             {
-                signal: controlador.abort()
+                signal: controlador.signal
             }
         )
         const processo = await resposta.json()
@@ -35,7 +37,7 @@ async function servidorAtivo() {
 btnEnviar.addEventListener('click', SalvarUsuario)
 
 async function SalvarUsuario() {
-    const resposta = await fetch(API_URL, {
+    const resposta = await fetch('http://192.168.1.15:5050/usuarios', {
         method: "POST",
         headers: {
             "content-Type": "application/json"
@@ -49,4 +51,19 @@ async function SalvarUsuario() {
 
     mostraCod.textContent = ""
     mostraCod.textContent = usuarios.mensagem
+}
+
+btnEnviarId.addEventListener('click', BuscarUsuario)
+
+async function BuscarUsuario() {
+    const resposta = await fetch(`${API_URL}usuarios/${id.value}`)
+    const usuarios =  await resposta.json()
+
+    mostraCod.textContent = ""
+
+    if (resposta.ok) 
+        mostraCod.textContent = JSON.stringify(usuarios.nome)
+    else 
+        mostraCod.textContent = JSON.stringify(usuarios.mensagem)
+    
 }
