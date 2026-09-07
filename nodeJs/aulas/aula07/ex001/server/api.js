@@ -53,6 +53,23 @@ export function start() {
         })
     })
 
+    // Rota para buscar usuários   
+    app.get('/usuarios/:id', (req, res) => {
+        const id = Number(req.params.id)
+
+        const usuario = usuarios.find(u => u.id === id)
+
+        if (!usuario) {
+            res.status(404).json({
+                mensagem: "[ERRO 404] Usuário não encontrado"
+            })
+
+            return
+        }
+
+        res.status(200).send(usuario)
+    })
+
     app.listen(PORT, '0.0.0.0', () => {
         console.log(title("Servidor: " + title.bgRgb(1,1,1)(" 07_EX001 ") + " rodando na porta " + title.bgRgb(1,1,1)(` ${PORT} `)))
         console.log("Acesso local: " + link.underline((`http://localhost:${PORT}/`)))
