@@ -3,4 +3,13 @@
 body {
     background-color: black;
     color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+input#id {
+    width: 50px;
 }
