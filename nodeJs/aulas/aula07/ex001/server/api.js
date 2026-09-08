@@ -33,9 +33,9 @@ export function start() {
     app.post('/usuarios', (req, res) => {
         const campoNome = req.body.nome
 
-        if (!campoNome) {
+        if (!campoNome || !isNaN(campoNome)) {
             res.status(400).json({
-                mensagem: "[ERRO 400] Nome é obrigatório"
+                mensagem: "[ERRO 400] Campo Nome inválido"
             })
 
             return
@@ -57,8 +57,18 @@ export function start() {
     app.get('/usuarios/:id', (req, res) => {
         const id = Number(req.params.id)
 
+        // Valida o envio
+        if (isNaN(id)) {
+            res.status(400).json({
+                mensagem: "[ERROR 400] o campo ID deve conter apenas números"
+            })
+
+            return
+        }
+
         const usuario = usuarios.find(u => u.id === id)
 
+        // Valida se o usuário existe
         if (!usuario) {
             res.status(404).json({
                 mensagem: "[ERRO 404] Usuário não encontrado"
