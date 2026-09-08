@@ -48,7 +48,7 @@ export function start() {
 
         usuarios.push(novoUsuario)
 
-        res.status(200).json({
+        res.status(201).json({
             mensagem: "Um usuário adicionado!"
         })
     })
