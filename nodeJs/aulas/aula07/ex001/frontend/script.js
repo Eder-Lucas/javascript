@@ -37,7 +37,7 @@ async function servidorAtivo() {
 btnEnviar.addEventListener('click', SalvarUsuario)
 
 async function SalvarUsuario() {
-    const resposta = await fetch('http://192.168.1.15:5050/usuarios', {
+    const resposta = await fetch(`${API_URL}usuarios`, {
         method: "POST",
         headers: {
             "content-Type": "application/json"
@@ -61,6 +61,7 @@ async function BuscarUsuario() {
 
     mostraCod.textContent = ""
 
+    // Validação dependendo da resposta do servidor
     if (resposta.ok) 
         mostraCod.textContent = JSON.stringify(usuarios.nome)
     else 
