@@ -13,7 +13,7 @@ const aulas = await classroom()
 
 // Contabiliza todas as aulas
 async function totalArchive() {
-   const totalArchive = (await fs.readdir("./aulas")).length
+   const totalArchive = (await fs.readdir("./aulas")).length - 1
    return totalArchive
 }
 
@@ -26,10 +26,12 @@ async function classroom() {
 
     // Pega o diretorio de cada uma dessas aulas, no caso, os exercicios
     for (const aula of aulas) {
-        const ex = await fs.readdir(`./aulas/${aula}`) 
-        n++
+        if (aula !== 'index.css') {
+            const ex = await fs.readdir(`./aulas/${aula}`) 
+            n++
 
-        arquivos[n] = ex
+            arquivos[n] = ex
+        }
     }
 
     return arquivos
