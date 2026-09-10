@@ -1,6 +1,6 @@
 const mostraCod = document.querySelector('p#resposta')
 const btnCod = document.querySelector('button#cod')
-const nome = document.querySelector('input#nome')
+const campoNome = document.querySelector('input#nome')
 const btnEnviar = document.querySelector('input#enviar')
 const btnEnviarId = document.querySelector('input#enviarId')
 const id = document.querySelector('input#id')
@@ -43,7 +43,7 @@ async function SalvarUsuario() {
             "content-Type": "application/json"
         },
         body: JSON.stringify({
-            nome: nome.value,
+            nome: campoNome.value,
         })
     })
 
