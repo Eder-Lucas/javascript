@@ -3,6 +3,7 @@ import cors from 'cors'
 import chalk from 'chalk'
 import 'dotenv/config'
 import usuariosRoutes from './routes/usuarios.routes.js'
+import statusRoutes from './routes/status.routes.js'
 
 export default function start() {
     const app = express()
@@ -10,8 +11,8 @@ export default function start() {
     const SERVER_IP = process.env.SERVER_IP
 
     // Origens permitidas 
-    const LIVE_SERVER = 'http://127.0.0.1:52443'
-    const DEVICES = 'http://192.168.1.15:52443'
+    const LIVE_SERVER = ''
+    const DEVICES = ''
     const GITHUB_PAGES = 'https://eder-lucas.github.io'
     const origens = [DEVICES, LIVE_SERVER, GITHUB_PAGES]
 
@@ -23,6 +24,7 @@ export default function start() {
 
     // Rotas
     app.use(usuariosRoutes)
+    app.use(statusRoutes)
 
     // Estilo do chalk
     const title = chalk.rgb(255, 23, 189)
