@@ -2,12 +2,6 @@ import express from 'express'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json({
-        mensagem: "Servidor respondendo!"
-    })
-})
-
 const usuarios = []
 router.post('/usuarios', (req, res) => {
     const {nome, idade} = req.body
