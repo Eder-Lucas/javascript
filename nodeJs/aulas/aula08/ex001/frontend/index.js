@@ -3,6 +3,8 @@ const campoNome = document.querySelector('input#nome')
 const campoIdade = document.querySelector('input#idade')
 const res = document.querySelector('p#resposta')
 const res_server = document.querySelector('p#resposta-server')
+const btnId = document.querySelector('input#enviaID')
+const campoID = document.querySelector('input#id')
 
 const URL_API = 'http://192.168.1.15:4040'
 
@@ -23,8 +25,11 @@ async function SalvarUsuario() {
 
         const dados = await resposta.json()
 
-        if(!resposta.ok) dados.mensagem
-        
+        if(!resposta.ok) {
+            res.textContent = dados.erro
+
+            return
+        }
         res.textContent = `Usuário: ${dados.usuario.nome} adicionado!`
 
     } catch (erro) {
@@ -61,3 +66,18 @@ async function Status() {
 setInterval(() => {
     Status()
 }, 2000)
+
+btnId.addEventListener('click', buscarUsuario)
+
+async function buscarUsuario() {
+    const resposta = await fetch(`${URL_API}/usuarios/${campoID.value}`)
+    console.log(campoID.value)
+    const dados = await resposta.json()
+
+    if(!resposta.ok) {
+        res.textContent = dados.erro
+        return
+    }
+    
+    res.textContent = JSON.stringify(dados.user)
+}
