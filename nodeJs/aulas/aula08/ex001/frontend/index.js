@@ -56,7 +56,7 @@ async function Status() {
         }
     } catch (erro) {
         if (erro.name === "AbortError") {
-            res_server.textContent = "Servidor demorou demais"
+            res_server.textContent = "Servidor está demorando a responder"
         } else {
             res_server.textContent = "Não foi possivel conectar ao servidor"
         }
@@ -71,7 +71,7 @@ btnId.addEventListener('click', buscarUsuario)
 
 async function buscarUsuario() {
     const resposta = await fetch(`${URL_API}/usuarios/${campoID.value}`)
-    console.log(campoID.value)
+
     const dados = await resposta.json()
 
     if(!resposta.ok) {
