@@ -4,6 +4,7 @@ import chalk from 'chalk'
 import 'dotenv/config'
 import usuariosRoutes from './routes/usuarios.routes.js'
 import statusRoutes from './routes/status.routes.js'
+import { errorMiddleware } from './middleware/error.middleware.js'
 
 export default function start() {
     const app = express()
@@ -25,6 +26,7 @@ export default function start() {
     // Rotas
     app.use(usuariosRoutes)
     app.use(statusRoutes)
+    app.use(errorMiddleware)
 
     // Estilo do chalk
     const title = chalk.rgb(255, 23, 189)
