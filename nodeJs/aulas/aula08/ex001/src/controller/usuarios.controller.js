@@ -1,6 +1,6 @@
 import * as usuariosService from '../services/usuarios.service.js'
 
-export function criar(req, res) {
+export function criar(req, res, next) {
     try {
         const {nome, idade} = req.body
 
@@ -10,26 +10,30 @@ export function criar(req, res) {
             mensagem: "Usuário criado",
             usuario: usuario
         })
+
     } catch (erro) {
-        res.status(400).json({
-            erro: erro.message
-        })
+        next(erro)
     }
 }
 
-export function buscar(req, res) {
+export function buscar(req, res, next) {
     try {
         const id = Number(req.params.id)
-        console.log(id)
+        
+        if (isNaN(id) || id <= 0) {
+            const erro = new Error("Campo ID preenchido incorretamente")
+            erro.status = 400
+
+            throw erro
+        }
+        
         const usuario = usuariosService.buscar(id)
 
         res.status(200).json({
             user: usuario
         })
+
     } catch (erro) {
-        console.log(erro)
-        res.status(400).json({
-            erro: erro.message
-        })
+        next(erro)
     }
 }
