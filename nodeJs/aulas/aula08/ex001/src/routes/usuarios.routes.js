@@ -1,22 +1,8 @@
 import express from 'express'
-
+import * as usuariosController from '../controller/usuarios.controller.js'
 const router = express.Router()
 
-const usuarios = []
-router.post('/usuarios', (req, res) => {
-    const {nome, idade} = req.body
-
-    const novoUsuario = {
-        id: usuarios.length + 1,
-        nome: nome,
-        idade: idade
-    }
-    usuarios.push(novoUsuario)
-
-    res.status(201).json({
-        usuario: novoUsuario,
-        mensagem: "Usuário criado!"
-    })
-})
+router.post('/usuarios', usuariosController.criar)
+router.get('/usuarios/:id', usuariosController.buscar)
 
 export default router // Exporta esse router que contém várias rotas para os usuários
