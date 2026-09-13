@@ -36,7 +36,7 @@ export function buscar(id) {
         const erro = new Error("Usuário não encontrado");     
         erro.status = 404
 
-        throw erro 
+        throw erro // Lança o erro, interrompendo o fluxo e retornando isso para o controller
     }
     
     return usuarioBuscado

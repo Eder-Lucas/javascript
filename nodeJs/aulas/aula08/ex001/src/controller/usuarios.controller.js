@@ -27,6 +27,6 @@ export function buscar(req, res, next) {
         })
 
     } catch (erro) {
-        next(erro)
+        next(erro) // Os erros do service que chegam são encaminhados para o express
     }
 }
