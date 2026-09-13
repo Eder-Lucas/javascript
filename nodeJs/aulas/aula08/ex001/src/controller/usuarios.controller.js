@@ -18,15 +18,8 @@ export function criar(req, res, next) {
 
 export function buscar(req, res, next) {
     try {
-        const id = Number(req.params.id)
-        
-        if (isNaN(id) || id <= 0) {
-            const erro = new Error("Campo ID preenchido incorretamente")
-            erro.status = 400
-
-            throw erro
-        }
-        
+        const id = req.params.id
+               
         const usuario = usuariosService.buscar(id)
 
         res.status(200).json({

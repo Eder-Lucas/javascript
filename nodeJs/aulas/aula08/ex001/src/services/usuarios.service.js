@@ -9,6 +9,7 @@ export function criar(nome, idade) {
 
         throw erro
     }
+
     const novoUsuario = {
         id: usuarios.length + 1,
         nome: nome,
@@ -20,6 +21,15 @@ export function criar(nome, idade) {
 }
 
 export function buscar(id) {
+    id = Number(id)
+
+    if (isNaN(id) || id <= 0) {
+        const erro = new Error("Campo ID preenchido incorretamente")
+        erro.status = 400
+
+        throw erro
+    }
+
     const usuarioBuscado = usuarios.find(u => u.id === id)
 
     if (!usuarioBuscado) {
