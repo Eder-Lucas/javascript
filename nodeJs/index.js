@@ -109,9 +109,18 @@ async function questionsLesson(totalExercise, lesson, option) {
         await new Promise(resolve => setTimeout(resolve, 170));
 
         const URL = `./aulas/aula${lesson}/ex${exercise}/ex${exercise}.js`
-        await spawn("node", ["--watch", URL], {
-            stdio: "inherit"
-        })
+
+        // Tratando caso especifico da lição 09
+        if (lesson == "09") {
+            await spawn("node", [URL], {
+                stdio: "inherit"
+            })
+        }
+        else {
+            await spawn("node", ["--watch", URL], {
+                stdio: "inherit"
+            })
+        }
 
         log.success(chalk.cyan("Aula carregada com sucesso!"))
         console.log("")
